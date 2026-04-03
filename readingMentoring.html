@@ -1,0 +1,3223 @@
+
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="naver-site-verification" content="f6d84a9701056fdbb4a4570ac54f612c6cc43f03" />
+    <meta name="google-site-verification" content="7sfBYwuVtugR7SW1Lo8iyn2AzBvt1FYE3fWhN9rfqGg" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+	<meta name="_sns_">
+	
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.togetherschool.go.kr/images/common/logo_sns_share_new.png">
+    <meta property="og:title" content="함께학교 : 학생, 학부모, 교원이 함께하는 디지털 소통 플랫폼">
+        <meta property="og:site_name" content="함께학교">
+    <meta property="og:url" id="meta_detailView_url" content="https://www.togetherschool.go.kr">
+    <meta property="og:description" id="meta_detailView_desc" content=" ">
+    <title>함께학교</title>
+
+    <script type="text/javascript" src="/js/jquery-3.7.1.min.js?v=20250203"></script>
+    <script type="text/javascript" src="/js/common.js?v=20250203"></script>
+    <script type="text/javascript" src="/js/gnb.js?v=20250203"></script>
+    <script type="text/javascript" src="/js/togetherUtil.js?v=20250203"></script>
+    <script type="text/javascript" src="/js/jquery.cookie.js?v=20250203"></script>
+    <link rel="stylesheet" href="https://www.togetherschool.go.kr/css/common.css?v=20250203">
+    <link rel="stylesheet" href="https://www.togetherschool.go.kr/css/layout.css?v=20250203">
+    <link rel="stylesheet" href="https://www.togetherschool.go.kr/css/style.css?v=20250203">
+    <link rel="stylesheet" href="https://www.togetherschool.go.kr/css/NotoSansKR-Hestia.css?v=20250203">
+    <link rel="stylesheet" href="https://www.togetherschool.go.kr/css/locale.css">
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=20250203" />
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico?v=20250203" />
+</head>
+<body>
+    <div class="wrap">
+        <script type="text/javascript">
+    $(document).ready(function() {
+        var currentPath = window.location.pathname;
+        var $navLinks = $("nav a");
+        var $subMenuLinks = $(".m_sub_menu a");
+
+        // 네비게이션 버튼 on
+        // 동작이 일관적이지 않아서 일단 막음, 20251028
+        /*
+        $navLinks.each(function() {
+            var hrefValue = $(this).attr('href');
+            if (hrefValue !== '/' && currentPath.startsWith(hrefValue)) {
+
+            	if (currentPath.startsWith('/policy-proposal')) {
+
+                    if (currentPath.startsWith('/policy-proposal/policyContestProposal')
+                     || currentPath.startsWith('/policy-proposal/aiPropsal/aiNewPropsal')
+                     || (currentPath.startsWith('/policy-proposal/detailView') && "" > "1" && "" < "6")
+                     ) {
+
+                    	if (hrefValue.startsWith('/policy-proposal/policyContestProposal')) {
+
+                    	    $(this).addClass('on');
+                    	}
+                        
+                    } else {
+
+                        $(this).addClass('on');
+                    }
+
+                } else {
+
+                    $(this).addClass('on');
+                }
+            }
+
+            if (currentPath.startsWith('/policy-discussion')
+                || currentPath.startsWith('/policy-answer')
+                || currentPath.startsWith('/policy-realization')
+                || currentPath.startsWith('/teaParty')) {
+                $("nav a:eq(0)").addClass('on');
+            }
+            if (currentPath.startsWith('/teacherRoom')) {
+                $("nav a:eq(1)").addClass('on');
+            }
+            if (currentPath.startsWith('/togetherTalkTalk')
+                || currentPath.startsWith('/counseling-expert') ) {
+                $("nav a:eq(2)").addClass('on');
+            }
+            if (currentPath.startsWith('/commuSquare')) {
+                $("nav a:eq(3)").addClass('on');
+            }
+            if (currentPath.startsWith('/studyCafe')) {
+                $("nav a:eq(4)").addClass('on');
+            }
+            if (currentPath.startsWith('/playGround')) {
+                $("nav a:eq(5)").addClass('on');
+            }
+        });
+        */
+
+        $subMenuLinks.each(function() {
+            var hrefValue = $(this).attr('href');
+            if (hrefValue !== '/' && currentPath.startsWith(hrefValue)) {
+                $(this).addClass('on');
+            }
+            if (currentPath.startsWith('/policy-discussion')
+                || currentPath.startsWith('/policy-answer')
+                || currentPath.startsWith('/policy-realization')
+                || currentPath.startsWith('/teaParty')) {
+                $(".m_sub_menu a:eq(0)").addClass('on');
+            }
+            if (currentPath.startsWith('/teacherRoom')) {
+                $(".m_sub_menu a:eq(1)").addClass('on');
+            }
+            if (currentPath.startsWith('/togetherTalkTalk')) {
+                $(".m_sub_menu a:eq(2)").addClass('on');
+            }
+            if (currentPath.startsWith('/commuSquare')) {
+                $(".m_sub_menu a:eq(3)").addClass('on');
+            }
+            if (currentPath.startsWith('/studyCafe')) {
+                $(".m_sub_menu a:eq(4)").addClass('on');
+            }
+            if (currentPath.startsWith('/playGround')) {
+                $(".m_sub_menu a:eq(5)").addClass('on');
+            }
+        });
+
+        // 회원 URL일 경우 상단 top 영역 숨김
+        if (currentPath.startsWith('/user')) {
+            $('.top-login-area').hide();
+        }
+
+        var serverType = "DEV";
+        if("DEV"!=serverType && "LOCAL"!=serverType) {
+            serverType = "";
+        } else {
+            serverType += " ";
+        }
+
+        function updateTitle() {
+            if (currentPath.startsWith('/introduction')) {
+                document.title = serverType + '함께학교란? : 함께학교';
+            } else if (currentPath.startsWith('/policy-proposal')) {
+                document.title = serverType + '정책제안 : 함께학교';
+            } else if (currentPath.startsWith('/policy-discussion')) {
+                document.title = serverType + '정책토론 : 함께학교';
+            } else if (currentPath.startsWith('/policy-answer')) {
+                document.title = serverType + '정책답변 : 함께학교';
+            } else if (currentPath.startsWith('/policy-realization')) {
+                document.title = serverType + '정책실현 : 함께학교';
+            } else if (currentPath.startsWith('/teaParty')) {
+                document.title = serverType + '함께차담회 : 함께학교';
+            } else if (currentPath.startsWith('/teacherRoom')){
+                document.title = serverType + '교원연구실 : 함께학교';
+            } else if (currentPath.startsWith('/playGround')){
+                document.title = serverType + '공지사항 : 함께학교';
+            } else if (currentPath.startsWith('/commuSquare')){
+                document.title = serverType + '함께행복 : 함께학교';
+            } else if (currentPath.startsWith('/classRoom')){
+                document.title = serverType + '교실 : 함께학교';
+            } else if (currentPath.startsWith('/togetherTalkTalk')) {
+                document.title = serverType + '함께톡톡 : 함께학교';
+            } else {
+                document.title = serverType + '함께학교는 학생·학부모·교원이 서로의 생각을 나누는 소통 플랫폼입니다.';
+            }
+        }
+
+        updateTitle();
+
+        $(window).on('hashchange', function() {
+            currentPath = window.location.pathname;
+            updateTitle();
+        });
+
+        
+        var myPageUserId = 'tutoretest018';
+        var myNotcNewCnt;
+        $.ajax({
+            url : '/myPage/myPageNewAjax',
+            data : {'myPageUserId' : myPageUserId},
+            async : false,
+            success : function(result){
+                if(typeof(result) == 'undefined') {return;}
+                if(result.noReadNotc > 0 || result.noReadPstCmt > 0 || result.noReadReCmt > 0){
+                    $('#myPg a').addClass('new_up');
+                }
+                myNotcNewCnt = result.noReadNotc;
+            },
+            error : function(){
+                alert('error');
+                return;
+            }
+        });
+        if(myNotcNewCnt > 99){
+        	$('[name=myNotcNewCnt]').text('99+');
+        }else if(myNotcNewCnt == 0){
+        	$('[name=myNotcNewCnt]').css('display','none');
+        }else{
+        	$('[name=myNotcNewCnt]').text(myNotcNewCnt);
+        }
+        $('[name=myNotcList_btn]').click(function(e){
+        	$.ajax({
+                url : '/myPage/myNotcListAjax',
+                data : {'myPageUserId' : myPageUserId},
+                async : false,
+                success : function(result){
+                    if(typeof(result) == 'undefined') {return;}
+                    $('[name=myNotcList5]').empty();
+                    if(result.length < 1){
+                    	$('[name=myNotcList5]').prepend("<div class='no_alarm_txt'>알림이 없습니다.</div>");
+                    }
+                    var htmlStr = "";
+                    for(var i=0;i<result.length;i++){
+                    	htmlStr += "<ul><li>";
+
+						if (result[i].notcTypeCd == 'msg') {
+							htmlStr += "<a href='/messages/detail?messageId=" + result[i].msgId+"'>"
+						} else {
+							htmlStr += "<a href='/myPage/myNoticeDetail?notcId="+result[i].notcId+"'>"
+						}
+                    	htmlStr += "<div class='info_area'><p class='tit'>";
+
+						if (result[i].notcTypeCd == 'msg') {
+							htmlStr += "[쪽지]";
+						} else {
+							htmlStr += "[알림]";
+						}
+                    	htmlStr += "</p><p class='m_txt'>";
+                    	if (result[i].notcTypeCd == 'C') {
+                    		htmlStr += result[i].notcTitle+"("+ result[i].pstCmtCntn +")";
+                    	} else if(result[i].notcTypeCd == 'msg') {
+							if (result[i].senderAdminYn === 'Y') {
+								htmlStr += '[관리자]' + result[i].msgTitle;
+							} else {
+								htmlStr += result[i].msgTitle;
+							}
+                        }else{
+                    		htmlStr += result[i].notcTitle+"("+ result[i].pstTitle +")";
+                        }
+                        htmlStr += "</p><p class='date'>";
+                        htmlStr += result[i].crtnDtm;
+                        htmlStr += "</p></div></a></li></ul>";
+                    }
+                    $('[name=myNotcList5]').prepend(htmlStr);
+                    $('[name=myNotcList5]').append("<a href='/myPage/myNotice' class='btn_go_mypage'><span>+</span> 더보기</a>");
+                    $('[name=myNotcNewCnt]').css('display','none');
+                },
+                error : function(){
+                    alert('error');
+                    return;
+                }
+            });
+        });
+        
+
+    });
+
+    function fnLogout() {
+        try {
+        	ZoneAppExecute("together-logout","","", false, true);
+        } catch(err) {
+            console.log("not mobile - ZoneAppExecute pass");
+        }
+        location.href = "/logout";
+    }
+</script>
+
+<header class="new">
+	<div class="utils">
+		<div class="util_left_area">
+			<div class="mode_lang_wrap">
+				<div class="mode_area"> <!-- 서브화면에서는 안보이게 css에서 처리(추후 서브 다크모드 완료시 css에서 수정 예정) -->
+					<button type="button" id="dark_change_pc" class="btn_mode_change"><i class="img_mode"></i></button>
+				</div>
+				<div class="lang_area">
+					<select name="" id="myCustomSelect" class="dark_type notranslate custom_translate">
+						<option value="ko">한국어</option>
+						<option value="en">English</option>
+						<option value="ja">日本語</option>
+						<option value="zh-CN">简体中文</option>
+						<option value="zh-TW">中文（繁體）</option>
+						<option value="vi">Tiếng Việt</option>
+						<option value="th">แบบไทย</option>
+						<option value="id">Indonesia</option>
+						<option value="fr">Français</option>
+						<option value="es">Español</option>
+						<option value="ru">Русский</option>
+						<option value="de">Deutsch</option>
+						<option value="it">Italiano</option>
+					</select>
+					<div id="google_translate_element" style="display: none;"></div>
+				</div>
+				<div class="lang_tooltip">
+					<i class="ico_lang_tooltip"></i>
+					<div class="lang_tooltip_exp">
+						함께학교는 장벽없는 배리어프리서비스를 위해 다국어 번역 기능을 시험적으로 제공하고 있습니다. 사이트 번역은 어색한 부분이 있거나 오류가 있을 수도 있으며, 일부 누락되는 부분이 있을 수 있습니다. 번역에 대한 의견은 hotline@ebs.co.kr으로 공유해주시면 서비스 개선에 참고할 수 있도록 하겠습니다.
+					</div>
+				</div>
+			</div>
+		</div>
+		
+        <ul>
+            <li> <!-- pc 알림 영역 추가 20240517 -->
+	                    <button type="button" class="btn_bell" name="myNotcList_btn" title="알림 확인 버튼"></button>
+	                    <span class="al_num" name="myNotcNewCnt"></span>
+	                    <div class="alarm_list" name="myNotcList5"></div>
+	            	</li>
+                    <li>
+                    	<a href="javascript:void(0)" style="cursor: default"  class="m">
+                        		 	<b>tutoretest018님</b>
+                        		 	</a>
+                        	</li>
+                    <li id="myPg"><a href="/myPage/myPageHome" class="m">마이페이지</a>
+                    <li><a href="javascript:fnLogout();" class="m">로그아웃</a></li>
+                </ul>
+    </div>
+
+    <div class="gnb new">
+    <a href="javascript:void(0)" class="nav_m">
+		<img src="https://www.togetherschool.go.kr/images/common/btn_fullmenu.svg" class="light_img" alt="전체메뉴"> <!-- //클래스 추가-20251125 -->
+		<img src="https://www.togetherschool.go.kr/images/common/btn_fullmenu_dark.svg" class="dark_img" alt="전체메뉴"> <!-- //다크모드용 이미지 추가-20251125 -->
+        <i class="hilight_dot"></i>
+        </a>
+    <h1 class="logo">
+        <a href="/"><span class="hide">함께학교</span></a>
+        <!-- <div class="img_open"></div> --> <!-- 20231120 오픈축하 이미지 추가 -->
+        <div class="bell_area"> <!-- mobile 알림 영역 추가 20240517 -->
+                <button class="btn_bell" name="myNotcList_btn" title="알림 확인 버튼"></button>
+                <span class="al_num" name="myNotcNewCnt"></span>
+            </div>
+            <div class="alarm_list" name="myNotcList5"></div>
+        </h1>
+<nav>
+        <ul class="swiper-wrapper">
+            <li class="swiper-slide">
+                    <a href="/sptReglImprvm/main" data_menuCd="Z">
+                        현장의견 수렴</a>
+                    <ul class="web_over_2depth">
+                            <li >
+                                    <a href="/sptReglImprvm/main"
+                                       >
+                                        학교 현장 규제 개선</a>
+                                    </li>
+                                <li >
+                                    <a href="/sptOpinion/clct"
+                                       >
+                                        인공지능 윤리</a>
+                                    </li>
+                                </ul>
+                    </li>
+                <li class="swiper-slide">
+                    <a href="/policy-proposal" data_menuCd="A">
+                        정책제안<i class="hilight_dot"></i>
+                        </a>
+                    <ul class="web_over_2depth">
+                            <li >
+                                    <a href="/policy-proposal"
+                                       >
+                                        정책제안<i class="hilight_dot"></i>
+                                        </a>
+                                    </li>
+                                <li >
+                                    <a href="/policy-proposal/policyContestProposal"
+                                       >
+                                        AI 교육정책 공모</a>
+                                    </li>
+                                <li >
+                                    <a href="/policy-discussion"
+                                       >
+                                        정책토론</a>
+                                    </li>
+                                <li >
+                                    <a href="/policy-answer"
+                                       >
+                                        정책답변</a>
+                                    </li>
+                                <li >
+                                    <a href="/policy-realization"
+                                       >
+                                        정책실현</a>
+                                    </li>
+                                <li >
+                                    <a href="/eduConvrs"
+                                       >
+                                        교육진담 간담회</a>
+                                    </li>
+                                </ul>
+                    </li>
+                <li class="swiper-slide">
+                    <a href="/studyCafe/videoTutoring" data_menuCd="E">
+                        스터디카페</a>
+                    <ul class="web_over_2depth">
+                            <li >
+                                    <a href="/studyCafe/readingMentoring"
+                                       class="has-depth3">
+                                        독서멘토링</a>
+                                    <ul class="web_over_3depth">
+                                            <li >
+                                                    <a href="/studyCafe/readingMentoring"
+                                                       >
+                                                        신청하기</a>
+                                                </li>
+                                                <li >
+                                                    <a href="/studyCafe/rmResultView"
+                                                       >
+                                                        결과보기</a>
+                                                </li>
+                                                </ul>
+                                    </li>
+                                <li >
+                                    <a href="/studyCafe/videoTutoring"
+                                       class="has-depth3">
+                                        화상튜터링</a>
+                                    <ul class="web_over_3depth">
+                                            <li >
+                                                    <a href="/studyCafe/videoTutoring"
+                                                       >
+                                                        신청하기</a>
+                                                </li>
+                                                <li >
+                                                    <a href="/studyCafe/resultView"
+                                                       >
+                                                        결과보기</a>
+                                                </li>
+                                                </ul>
+                                    </li>
+                                <li >
+                                    <a href="/consulting/consultingReqMain"
+                                       class="has-depth3">
+                                        진로·학업 설계</a>
+                                    <ul class="web_over_3depth">
+                                            <li class="guide">
+                                                    <a href="/eplanner"
+                                                       class="new_window" target="_blank" >
+                                                        e-플래너<i class="hilight_dot"></i>
+                                                        </a>
+                                                </li>
+                                                <li >
+                                                    <a href="/consulting/consultingReqMain"
+                                                       >
+                                                        컨설팅</a>
+                                                </li>
+                                                <li >
+                                                    <a href="/consulting/consultingDataRoom"
+                                                       >
+                                                        자료실</a>
+                                                </li>
+                                                </ul>
+                                    </li>
+                                <li >
+                                    <a href="/studyCafe/contest"
+                                       >
+                                        공모전 모아보기</a>
+                                    </li>
+                                <li >
+                                    <a href="/studyCafe/univCounseling"
+                                       >
+                                        대입상담</a>
+                                    </li>
+                                <li >
+                                    <a href="/studyCafe/discussionContest"
+                                       >
+                                        토론대회</a>
+                                    </li>
+                                <li >
+                                    <a href="/studyCafe/schlClubNotice"
+                                       >
+                                        함께 동아리</a>
+                                    </li>
+                                </ul>
+                    </li>
+                <li class="swiper-slide">
+                    <a href="/togetherTalkTalk/narrow" data_menuCd="C">
+                        함께톡톡<i class="hilight_dot"></i>
+                        </a>
+                    <ul class="web_over_2depth">
+                            <li >
+                                    <a href="/togetherTalkTalk/aidtBook"
+                                       >
+                                        AI 디지털교육자료<i class="hilight_dot"></i>
+                                        </a>
+                                    </li>
+                                <li >
+                                    <a href="/togetherTalkTalk/narrow"
+                                       >
+                                        답! 답해요<span style="color:red;font-size:1.5rem;">&nbsp;hot</span>
+                                        </a>
+                                    </li>
+                                <li >
+                                    <a href="/counseling-expert"
+                                       >
+                                        전문가상담</a>
+                                    </li>
+                                <li >
+                                    <a href="/togetherTalkTalk/shareInformation"
+                                       >
+                                        정보나눔</a>
+                                    </li>
+                                <li >
+                                    <a href="/togetherTalkTalk/shareMedia"
+                                       >
+                                        영상나눔<span style="color:red;font-size:1.5rem;">&nbsp;new</span>
+                                        <i class="hilight_dot"></i>
+                                        </a>
+                                    </li>
+                                <li class="guide">
+                                    <a href="/nhg/nhgMain"
+                                       class="new_window">
+                                        학부모 즐겨찾기</a>
+                                    </li>
+                                </ul>
+                    </li>
+                <li class="swiper-slide">
+                    <a href="/commuSquare/happyTS" data_menuCd="D">
+                        함께행복</a>
+                    <ul class="web_over_2depth">
+                            <li >
+                                    <a href="/commuSquare/happyTS"
+                                       >
+                                        행복한 함께학교</a>
+                                    </li>
+                                <li >
+                                    <a href="/commuSquare/magazine"
+                                       >
+                                        함께학교 매거진</a>
+                                    </li>
+                                <li >
+                                    <a href="/commuSquare/freeBBS"
+                                       >
+                                        자유게시판</a>
+                                    </li>
+                                <li >
+                                    <a href="/commuSquare/main"
+                                       >
+                                        커뮤니티<span style="color:red;font-size:1.5rem;">&nbsp;beta</span>
+                                        </a>
+                                    </li>
+                                <li >
+                                    <a href="/booksnap"
+                                       >
+                                        함께쓰담</a>
+                                    </li>
+                                </ul>
+                    </li>
+                <li class="swiper-slide">
+                    <a href="/lectureShare/lectureShareMain" data_menuCd="B">
+                        교원연구실<i class="hilight_dot"></i>
+                        </a>
+                    <ul class="web_over_2depth">
+                            <li >
+                                    <a href="/lectureShare/lectureShareMain"
+                                       >
+                                        수업의 숲</a>
+                                    </li>
+                                <li >
+                                    <a href="/teacherRoom/studyData"
+                                       class="has-depth3">
+                                        자료나눔</a>
+                                    <ul class="web_over_3depth">
+                                            <li >
+                                                    <a href="/teacherRoom/studyData"
+                                                       >
+                                                        교수학습자료</a>
+                                                </li>
+                                                <li >
+                                                    <a href="/teacherRoom/workData"
+                                                       >
+                                                        업무자료</a>
+                                                </li>
+                                                <li >
+                                                    <a href="/teacherRoom/schlAdministJobRduct"
+                                                       >
+                                                        학교 행정업무 경감</a>
+                                                </li>
+                                                </ul>
+                                    </li>
+                                <li >
+                                    <a href="/teacherRoom/tchPrizeNotice"
+                                       >
+                                        수업혁신 교사상</a>
+                                    </li>
+                                <li >
+                                    <a href="/teacherRoom/researchGroup"
+                                       >
+                                        전국 단위 연구회</a>
+                                    </li>
+                                <li >
+                                    <a href="/teacherRoom/publicContest"
+                                       >
+                                        교육혁신 선도교사</a>
+                                    </li>
+                                <li >
+                                    <a href="/teacherRoom/parentCounseling"
+                                       >
+                                        학부모상담 이렇게</a>
+                                    </li>
+                                <li >
+                                    <a href="/teacherRoom/freeBBS"
+                                       >
+                                        자유게시판</a>
+                                    </li>
+                                </ul>
+                    </li>
+                <li class="swiper-slide">
+                    <a href="/playGround/viewAll" data_menuCd="F">
+                        공지사항<i class="hilight_dot"></i>
+                        </a>
+                    <ul class="web_over_2depth">
+                            <li >
+                                    <a href="/playGround/policyNotification"
+                                       >
+                                        정책알림</a>
+                                    </li>
+                                <li >
+                                    <a href="/playGround/evtBBS"
+                                       >
+                                        함께이벤트</a>
+                                    </li>
+                                <li >
+                                    <a href="/playGround/vote"
+                                       >
+                                        투표</a>
+                                    </li>
+                                <li >
+                                    <a href="/playGround/playNotice"
+                                       >
+                                        공지사항</a>
+                                    </li>
+                                <li >
+                                    <a href="/playGround/serviceQNA"
+                                       >
+                                        서비스 Q&A</a>
+                                    </li>
+                                </ul>
+                    </li>
+                </ul>
+    </nav>
+</div>
+
+<div class="gnb_m">
+    <div class="menu_box">
+        <div class="member_box log_before">
+            <a href="javascript:;" class="menu_close" title="메뉴 닫기"></a>
+            <div class="mem_info">
+                <p class="slogan_greetings">교육소통 플랫폼</p>
+                <p class="target_name">함께학교 입니다.</p>
+            </div>
+            <div class="mem_btn">
+                <a href="javascript:void(0)" style="cursor: default" class="m">
+                            <b>tutoretest018님</b>
+                        </a>
+                        <a href="/myPage/myPageHome" class="m">마이페이지</a>
+                        <a href="javascript:fnLogout();" class="m">로그아웃</a>
+                    </div>
+        </div>
+        <nav>
+        	<div class="mode_lang_wrap">
+				<div class="mode_area"> <!-- 서브화면에서는 안보이게 css에서 처리(추후 서브 다크모드 완료시 css에서 수정 예정) -->
+					<button type="button" id="dark_change_mo" class="btn_mode_change"><i class="img_mode"></i></button>
+				</div>
+				<div class="lang_area">
+					<select name="" id="myCustomSelect" class="dark_type notranslate custom_translate">
+						<option value="ko">한국어</option>
+						<option value="en">English</option>
+						<option value="ja">日本語</option>
+						<option value="zh-CN">简体中文</option>
+						<option value="zh-TW">中文（繁體）</option>
+						<option value="vi">Tiếng Việt</option>
+						<option value="th">แบบไทย</option>
+						<option value="id">Indonesia</option>
+						<option value="fr">Français</option>
+						<option value="es">Español</option>
+						<option value="ru">Русский</option>
+						<option value="de">Deutsch</option>
+						<option value="it">Italiano</option>
+					</select>
+                    <div id="google_translate_element" style="display: none;"></div>
+                </div>
+            </div>
+            
+            <a href="#none;" class="proposal_contest gnb_depth_1">
+                        현장의견 수렴</a>
+                    <ul class="gnb_depth_2">
+                            <li >
+                                    <a href="/sptReglImprvm/main"
+                                       >
+                                        학교 현장 규제 개선</a>
+                                </li>
+                                <li >
+                                    <a href="/sptOpinion/clct"
+                                       >
+                                        인공지능 윤리</a>
+                                </li>
+                                </ul>
+                    <a href="#none;" class="proposal gnb_depth_1">
+                        정책제안<i class="hilight_dot"></i>
+                        </a>
+                    <ul class="gnb_depth_2">
+                            <li >
+                                    <a href="/policy-proposal"
+                                       >
+                                        정책제안<i class="hilight_dot"></i>
+                                        </a>
+                                </li>
+                                <li >
+                                    <a href="/policy-proposal/policyContestProposal"
+                                       >
+                                        AI 교육정책 공모</a>
+                                </li>
+                                <li >
+                                    <a href="/policy-discussion"
+                                       >
+                                        정책토론</a>
+                                </li>
+                                <li >
+                                    <a href="/policy-answer"
+                                       >
+                                        정책답변</a>
+                                </li>
+                                <li >
+                                    <a href="/policy-realization"
+                                       >
+                                        정책실현</a>
+                                </li>
+                                <li >
+                                    <a href="/eduConvrs"
+                                       >
+                                        교육진담 간담회</a>
+                                </li>
+                                </ul>
+                    <a href="#none;" class="study gnb_depth_1">
+                        스터디카페</a>
+                    <ul class="gnb_depth_2">
+                            <li >
+                                    <a href="/studyCafe/readingMentoring"
+                                       >
+                                        독서멘토링</a>
+                                </li>
+                                <li >
+                                    <a href="/studyCafe/videoTutoring"
+                                       >
+                                        화상튜터링</a>
+                                </li>
+                                <li >
+                                    <a href="/consulting/consultingReqMain"
+                                       >
+                                        진로·학업 설계</a>
+                                </li>
+                                <li >
+                                    <a href="/studyCafe/contest"
+                                       >
+                                        공모전 모아보기</a>
+                                </li>
+                                <li >
+                                    <a href="/studyCafe/univCounseling"
+                                       >
+                                        대입상담</a>
+                                </li>
+                                <li >
+                                    <a href="/studyCafe/discussionContest"
+                                       >
+                                        토론대회</a>
+                                </li>
+                                <li >
+                                    <a href="/studyCafe/schlClubNotice"
+                                       >
+                                        함께 동아리</a>
+                                </li>
+                                </ul>
+                    <a href="#none;" class="counseling gnb_depth_1">
+                        함께톡톡<i class="hilight_dot"></i>
+                        </a>
+                    <ul class="gnb_depth_2">
+                            <li >
+                                    <a href="/togetherTalkTalk/aidtBook"
+                                       >
+                                        AI 디지털교육자료<i class="hilight_dot"></i>
+                                        </a>
+                                </li>
+                                <li >
+                                    <a href="/togetherTalkTalk/narrow"
+                                       >
+                                        답! 답해요<span style="color:red;font-size:1.5rem;">&nbsp;hot</span>
+                                        </a>
+                                </li>
+                                <li >
+                                    <a href="/counseling-expert"
+                                       >
+                                        전문가상담</a>
+                                </li>
+                                <li >
+                                    <a href="/togetherTalkTalk/shareInformation"
+                                       >
+                                        정보나눔</a>
+                                </li>
+                                <li >
+                                    <a href="/togetherTalkTalk/shareMedia"
+                                       >
+                                        영상나눔<span style="color:red;font-size:1.5rem;">&nbsp;new</span>
+                                        <i class="hilight_dot"></i>
+                                        </a>
+                                </li>
+                                <li class="guide">
+                                    <a href="/nhg/nhgMain"
+                                       class="new_window">
+                                        학부모 즐겨찾기</a>
+                                </li>
+                                </ul>
+                    <a href="#none;" class="communication gnb_depth_1">
+                        함께행복</a>
+                    <ul class="gnb_depth_2">
+                            <li >
+                                    <a href="/commuSquare/happyTS"
+                                       >
+                                        행복한 함께학교</a>
+                                </li>
+                                <li >
+                                    <a href="/commuSquare/magazine"
+                                       >
+                                        함께학교 매거진</a>
+                                </li>
+                                <li >
+                                    <a href="/commuSquare/freeBBS"
+                                       >
+                                        자유게시판</a>
+                                </li>
+                                <li >
+                                    <a href="/commuSquare/main"
+                                       >
+                                        커뮤니티<span style="color:red;font-size:1.5rem;">&nbsp;beta</span>
+                                        </a>
+                                </li>
+                                <li >
+                                    <a href="/booksnap"
+                                       >
+                                        함께쓰담</a>
+                                </li>
+                                </ul>
+                    <a href="#none;" class="teacherlab gnb_depth_1">
+                        교원연구실<i class="hilight_dot"></i>
+                        </a>
+                    <ul class="gnb_depth_2">
+                            <li >
+                                    <a href="/lectureShare/lectureShareMain"
+                                       >
+                                        수업의 숲</a>
+                                </li>
+                                <li >
+                                    <a href="/teacherRoom/studyData"
+                                       >
+                                        자료나눔</a>
+                                </li>
+                                <li >
+                                    <a href="/teacherRoom/tchPrizeNotice"
+                                       >
+                                        수업혁신 교사상</a>
+                                </li>
+                                <li >
+                                    <a href="/teacherRoom/researchGroup"
+                                       >
+                                        전국 단위 연구회</a>
+                                </li>
+                                <li >
+                                    <a href="/teacherRoom/publicContest"
+                                       >
+                                        교육혁신 선도교사</a>
+                                </li>
+                                <li >
+                                    <a href="/teacherRoom/parentCounseling"
+                                       >
+                                        학부모상담 이렇게</a>
+                                </li>
+                                <li >
+                                    <a href="/teacherRoom/freeBBS"
+                                       >
+                                        자유게시판</a>
+                                </li>
+                                </ul>
+                    <a href="#none;" class="notification gnb_depth_1">
+                        공지사항<i class="hilight_dot"></i>
+                        </a>
+                    <ul class="gnb_depth_2">
+                            <li >
+                                    <a href="/playGround/viewAll"
+                                       >
+                                        전체보기</a>
+                                </li>
+                                <li >
+                                    <a href="/playGround/policyNotification"
+                                       >
+                                        정책알림</a>
+                                </li>
+                                <li >
+                                    <a href="/playGround/evtBBS"
+                                       >
+                                        함께이벤트</a>
+                                </li>
+                                <li >
+                                    <a href="/playGround/vote"
+                                       >
+                                        투표</a>
+                                </li>
+                                <li >
+                                    <a href="/playGround/playNotice"
+                                       >
+                                        공지사항</a>
+                                </li>
+                                <li >
+                                    <a href="/playGround/serviceQNA"
+                                       >
+                                        서비스 Q&A</a>
+                                </li>
+                                </ul>
+                    <a href="#none;" class="introduction gnb_depth_1">
+                        함께학교란?</a>
+                    <ul class="gnb_depth_2">
+                            <li >
+                                    <a href="/introduction/introGrt"
+                                       >
+                                        인사말</a>
+                                </li>
+                                <li >
+                                    <a href="/introduction"
+                                       >
+                                        함께학교란?</a>
+                                </li>
+                                </ul>
+                    </nav>
+    </div>
+    <div class="dim_bg"></div>
+</div><!-- 모바일 상단 메뉴-->
+<div class="m_sub_menu">
+    <!-- 모바일 대응을 위한 gnb -20240205(메뉴 4개 초과시 swiper 적용 필요/하단 스크립트 참고) -->
+    <ul class="swiper-wrapper">
+        <li class="swiper-slide">
+                <a href="/sptReglImprvm/main" data_menuCd="Z">
+                    현장의견 수렴</a>
+            </li>
+            <li class="swiper-slide">
+                <a href="/policy-proposal" data_menuCd="A">
+                    정책제안<i class="hilight_dot"></i>
+                    </a>
+            </li>
+            <li class="swiper-slide">
+                <a href="/studyCafe/videoTutoring" data_menuCd="E">
+                    스터디카페</a>
+            </li>
+            <li class="swiper-slide">
+                <a href="/togetherTalkTalk/narrow" data_menuCd="C">
+                    함께톡톡<i class="hilight_dot"></i>
+                    </a>
+            </li>
+            <li class="swiper-slide">
+                <a href="/commuSquare/happyTS" data_menuCd="D">
+                    함께행복</a>
+            </li>
+            <li class="swiper-slide">
+                <a href="/lectureShare/lectureShareMain" data_menuCd="B">
+                    교원연구실<i class="hilight_dot"></i>
+                    </a>
+            </li>
+            <li class="swiper-slide">
+                <a href="/playGround/viewAll" data_menuCd="F">
+                    공지사항<i class="hilight_dot"></i>
+                    </a>
+            </li>
+            <li class="swiper-slide">
+                <a href="/introduction" data_menuCd="H">
+                    함께학교란?</a>
+            </li>
+            </ul>
+</div><div class="sub_total_search">
+		<div class="sub_total_search_box">
+			<input type="text" placeholder="검색어를 입력하세요" readonly>
+			<button type="button"></button>
+		</div>
+		<div class="pop_dim"></div>
+		<div class="total_search_top_area" style="display: none;">
+			<div class="logo_prev_area">
+				<a href="/" class="pc"><span class="hide">함께학교 홈으로</span></a> <!-- pc일때 홈 이동 로고 버튼 표시 -->
+			    <a href="#" class="mob"><span class="hide">레이어 창 닫기</span></a> <!-- mobile일때 창닫기 버튼 표시 -->
+			</div>
+			<form name="searchBoxForm" id="searchBoxForm" method="post">
+				<input type="hidden" name="keyword" />
+			</form>
+			<div class="total_search_box">
+	<input type="text" class="popSrchKeyword" name="popSrchKeyword" maxlength="50" escapeXml="true" autocomplete="off">
+	<button class="keyword_del" style="display: none;"></button>
+	<button class="btn_search">
+		<span>검색</span>
+	</button>
+	<div class="total_search_cont_list">
+		<!-- 검색창 포커스 인 됐을때 보여질 리스트 -->
+		<div class="total_search_focus_list" style="display: none;">
+			<dl class="search_recent_list">
+				<dt>
+					<strong>최근 검색어</strong>
+					<button type="button" class="recent_searches_all_del" onclick="clearAllRecentSearches()">전체 삭제</button>
+				</dt>
+				<dd>
+					<ul class="recent_searches_ul"></ul>
+				</dd>
+			</dl>
+			<dl class="search_popular_list">
+				<dt>
+					<strong>인기 검색어</strong> <span class="base_date"></span>
+				</dt>
+				<dd>
+					<!-- 각 li 앞 넘버링은 자동으로 붙게 css에서 처리됨 -->
+					<ol class="search_popular_list_ol"></ol>
+				</dd>
+			</dl>
+		</div>
+		<div class="total_search_result_list" style="display: none;">
+			<!-- 검색창 검색어 입력 됐을때 보여질 리스트 -->
+			<ul class="search_menu_list"></ul>
+			<ul class="search_word_list"></ul>
+		</div>
+	</div>
+</div>
+
+<script>
+
+	var storageStatus;
+
+	// 스토리지 지원 체크
+	if(typeof(Storage) !== "undefined"){
+		storageStatus = true;
+	}else{
+		storageStatus = false;
+	}
+
+	// 메인화면 돋보기 클릭 이벤트
+	$(".srchBtn").on('click', function(e){
+		e.preventDefault();
+		var promotionUrl = $(".srchKeyword").attr("data-url");
+
+		// 프로모션 존재 시
+		if(promotionUrl && promotionUrl !== undefined && promotionUrl.trim() !== ""){
+			// 프로모션 이동
+			window.location.href=promotionUrl;
+
+		// 프로모션 미 존재 시
+		}else{
+			$('.total_search_top_area').show();
+	        $('.total_search_top_area').prev('.pop_dim').show();
+	        if($('.total_search_result_list').css('display') == 'none') {
+	            $('.total_search_focus_list').show();
+	            $('.total_search_box input').focus(); // 20241204 추가
+	        } else {
+	            $('.total_search_focus_list').hide();
+	        }
+		}
+
+		//가로 981 미만일때 컨텐츠 영역 스크롤 없앰 *이 부분은 꼭 적용해주세요*
+		if($(window).width() < 981) { 
+            $('html').css("overflow","hidden");
+        } else {
+            $('html').css("overflow","auto");
+        }
+        
+	}); 
+
+	// 서치박스 내 돋보기 클릭 이벤트
+	$(".btn_search").on('click', function(e){
+		e.preventDefault();
+		integratedSearch();
+	});
+
+	// DOM ready
+	$(document).ready(function() {
+
+		// main_total_search_box 포커스 인
+		// $('.main_total_search_box input, .total_search_box input').focus(function(){ 
+		$('.main_total_search_box input').focus(function(){ // 20241204 .total_search_box input 삭제
+		    $('.total_search_top_area').show();
+		    $('.total_search_cont_list').show();
+		    
+		    $('.total_search_top_area').prev('.pop_dim').show();
+		    
+		    if($('.total_search_result_list').css('display') == 'none') {
+		        $('.total_search_focus_list').show();
+		        $('.total_search_box input').focus(); // 20241204 추가
+		
+		    } else {
+		        $('.total_search_focus_list').hide();
+		    }
+
+		  	//가로 981 미만일때 컨텐츠 영역 스크롤 없앰 *이 부분은 꼭 적용해주세요*
+		    if($(window).width() < 981) { 
+		        $('html').css("overflow","hidden");
+		    } else {
+		        $('html').css("overflow","auto");
+		    }
+			// $('html').css("overflow","hidden"); // 20241204 삭제-메인 화면의 경우
+		});
+
+		// [모바일] sub_total_search_box 포커스 인
+		$('.sub_total_search_box input').focus(function(){ 
+            $('.total_search_top_area').show();
+            $('.total_search_top_area').prev('.pop_dim').show();
+            if($('.total_search_result_list').css('display') == 'none') {
+                $('.total_search_focus_list').show();
+                $('.total_search_box input').focus(); // 20241204 추가
+            } else {
+                $('.total_search_focus_list').hide();
+            }
+          	//컨텐츠 영역 스크롤 없앰 *이 부분은 꼭 적용해주세요*
+            $('html').css("overflow","hidden"); 
+        });
+
+        // 20241204 .total_search_container 클래스 추가해서 검색 결과 화면용 소스 추가 <- $('html').css("overflow","hidden"); 처리 없음
+        $('.total_search_container .total_search_box input').click(function(){ //포커스 인
+            $('.total_search_cont_list').show();
+            if($('.total_search_result_list').css('display') == 'none') {
+                $('.total_search_focus_list').show();
+            } else {
+                $('.total_search_focus_list').hide();
+            }
+            if($(window).width() < 981) { //가로 981 미만일때 컨텐츠 영역 스크롤 없앰 *이 부분은 꼭 적용해주세요*
+                $('html').css("overflow","hidden");
+            } else {
+                $('html').css("overflow","auto");
+            }
+        });
+
+     	// 20241204 검색 결과 화면에서 아무영역이나 클릭시 total_search_cont_list 숨김
+        $('.total_search_container').on('click',function(e){ 
+            if(!(($(e.target).closest(".total_search_container .total_search_box").length > 0 ))){
+                $(".total_search_container .total_search_cont_list").hide();
+                if($('.total_search_result_list').css('display') == 'none') {
+                    $('.total_search_focus_list').show();
+                } else {
+                    $('.total_search_focus_list').hide();
+                }
+                $('html').css("overflow","auto"); //가로 981 이상일때 컨텐츠 영역 스크롤 생김
+            }
+        });
+
+
+        const debounce = (callback, delay) => {
+            let timer;
+            return function () {
+                clearTimeout(timer);
+                timer = setTimeout(_ => callback.apply(this, arguments), delay);
+            };
+        }
+        // 이전 검색어
+        var as_term = "";
+        //텍스트 입력시 'total_search_result_list' 리스트 보이게('total_search_focus_list' 숨기고)
+        $('.total_search_box input').on('input', debounce(function () {
+            var term = $(this).val().trim();
+
+            if (term == '') {
+                $('.total_search_result_list').hide();
+                $('.total_search_focus_list').show();
+                $('.keyword_del').hide();
+                // 중복 호출 제외
+            } else if (term != as_term) {
+                as_term = term;
+                // 바로가기 & 자동완성
+                shortcutAndAutoComplete(term);
+
+                $('.total_search_result_list').show();
+                $('.total_search_focus_list').hide();
+                $('.keyword_del').show();
+            }
+        }, 250));
+
+
+		// 팝업 내 키다운 이벤트
+		$(".popSrchKeyword").on("keydown" ,function(e){
+			
+			// enter
+			if(e.key === 'Enter'){
+				e.preventDefault();
+				integratedSearch();				
+			}
+			
+		});
+
+	    // 20241112 추가: dim 영역 눌렀을때 검색 레이어창 닫기
+	    $('.pop_dim').on('click', function(){
+	        $('.total_search_top_area').prev('.pop_dim').hide();
+	        $('.total_search_top_area').hide();
+	        $('html').css("overflow","auto");
+	    });
+
+	  	// [모바일] 메인 돋보기 클릭
+		$('.btn_total_search').on('click',function(e){
+			e.preventDefault();
+		    $('.total_search_top_area').show();
+		    $('.total_search_cont_list').show();
+		    
+		    $('.total_search_top_area').prev('.pop_dim').show();
+		    
+		    if($('.total_search_result_list').css('display') == 'none') {
+		        $('.total_search_focus_list').show();
+		
+		    } else {
+		        $('.total_search_focus_list').hide();
+		    }
+
+		  	//가로 981 미만일때 컨텐츠 영역 스크롤 없앰 *이 부분은 꼭 적용해주세요*
+		    if($(window).width() < 981) { 
+		        $('html').css("overflow","hidden");
+		    } else {
+		        $('html').css("overflow","auto");
+		    }
+		});
+		
+		// [모바일] 레이어 창 닫기 클릭 이벤트
+		$(".pop_dim").nextAll('.total_search_top_area').find('.logo_prev_area .mob').on('click',function(e){
+			e.preventDefault();
+			$('.total_search_top_area').prev('.pop_dim').hide();
+	        $('.total_search_top_area').hide();
+	        $('html').css("overflow","auto");
+		});
+
+		// 검색 아이콘 버튼 클릭
+		$('.sub_total_search_box button').click(function(){ 
+            $('.total_search_top_area').show();
+            $('.total_search_top_area').prev('.pop_dim').show();
+            if($('.total_search_result_list').css('display') == 'none') {
+                $('.total_search_focus_list').show();
+            } else {
+                $('.total_search_focus_list').hide();
+            }
+            
+          	//컨텐츠 영역 스크롤 없앰 *이 부분은 꼭 적용해주세요*
+            $('html').css("overflow","hidden"); 
+        });
+
+    	// 브라우저에 localStorage 지원 시
+        if(storageStatus){
+            // 최근 검색어 노출
+	        displayRecentSearches();
+		}
+
+		// 프로모션 조회
+		integratedSearchPromotion();
+
+		// 인기 검색어 조회
+		popularKeywordList();
+		
+		// 검색 툴팁 ID
+		var tipId = '0001'
+		// 검색 툴팁 열기
+		openTipLayer(tipId);
+		
+		// 검색 툴팁 닫기
+		$('.btn_close_tip').on('click', function(){
+	        setCookieIndex("LayerTip_" + tipId, "done", 1);
+		    $(this).parent('.exp_tip_layer').attr('class', 'exp_tip_layer hidden');
+		});
+		
+    });
+	
+	// 프로모션 조회
+	function integratedSearchPromotion(){
+		$.ajax({
+        	type: "GET",
+            url: "/integratedSearch/promotion", 
+            data : {},
+            success: function(res) {
+				if(res != null){
+					$(".srchKeyword").attr("placeholder", res.promotionKwd);
+					$(".srchKeyword").attr("data-url", res.promotionUrl);
+				}
+			}
+         });
+	}
+
+    // 최근 검색어 조회
+    function getRecentSearches(){
+		if(storageStatus){
+			return JSON.parse(localStorage.getItem('recentSearches')) || [];
+		}
+		return null;
+	}
+
+ 	// 최근 검색어 전체 삭제
+	function clearAllRecentSearches(){
+		localStorage.removeItem("recentSearches");
+		displayRecentSearches();
+	}
+
+    // 최근 검색어 설정
+    function setRecentSearch(term){
+		var recentSearches = getRecentSearches();
+
+		// 스토리지 > 최근 검색어 존재 시
+		if(recentSearches != null){
+
+			// 동일 검색어 제거
+			recentSearches = recentSearches.filter(search => search !== term);
+
+			// 검색어 추가
+			recentSearches.push(term);
+	
+			// 최근 검색어 15개 제한
+			if(recentSearches.length > 15) {
+				recentSearches.shift();
+			}
+			
+			localStorage.setItem('recentSearches', JSON.stringify(recentSearches));
+
+			// 최근 검색어 디스플레이
+			displayRecentSearches();
+		}
+	}
+
+    // 최근 검색어 노출 
+    function displayRecentSearches(){
+        $(".recent_searches_ul").empty();
+		var recentSearches = getRecentSearches();
+
+		// 최근 검색어 존재 시
+		if(recentSearches != null && recentSearches.length > 0){
+			$(".search_recent_list").show();
+			
+			$.each(recentSearches, function(i, search){
+				var li = $("<li>").append($("<a>").text(search).attr("class", "keywordLink").attr("data-value", search).attr("href", "#").on("click", function(event){var term = $(this).attr("data-value"); clickLinkKeyword(term, event); }));
+				var xButton = $("<button>").attr("class", "recent_searches_del").click(function(){
+					removeRecentSearch(search);
+					return false;
+				});
+				
+				li.append(xButton);
+				$(".recent_searches_ul").prepend(li);					
+			});
+		// 최근 검색어 미 존재 시
+		}else{
+			$(".search_recent_list").hide();
+		}
+	}
+
+	// 인기 검색어 조회
+	function popularKeywordList(){
+		$.ajax({
+			type: "GET",
+            url: "/integratedSearch/popularKeywordList", 
+            data : {},
+            success: function(response) {
+                
+            	$(".search_popular_list_ol").empty();
+
+            	// 인기 검색어 존재 시
+				if(response.length > 0) {
+
+					for(var i = 0; i < response.length; i++){
+
+						// 첫번째에서 인기검색어 기준날짜 가져오기
+						if(i == 0){
+							var standard = response[i].populCrtnDtm;
+							var sMonth = standard.substring(4, 6); 
+							var sDay = standard.substring(6, 8);
+
+							// 기준일 설정
+							$(".base_date").text(sMonth + "." + sDay + " 기준");
+						}
+						var keyword = response[i].populKwd;
+						var li = $("<li>").append($("<a>").text(keyword).attr("class", "keywordLink").attr("data-value", keyword).attr("href", "#").on("click", function(event){var term = $(this).attr("data-value"); clickLinkKeyword(term, event); }));
+						$(".search_popular_list_ol").append(li);
+					}
+
+					$(".search_popular_list").show();
+
+				// 인기 검색어 미존재 시
+				}else{
+					$(".search_popular_list").hide();
+				}
+            	
+			}
+		});
+	}
+
+	// 인기 & 최근 & 자동완성 검색어 클릭 이벤트
+	function clickLinkKeyword(term, event){
+		event.preventDefault();
+		$(".popSrchKeyword").val(term);
+		integratedSearch();
+	}
+
+	// 최근 검색어 삭제
+	function removeRecentSearch(term){
+		var recentSearches = getRecentSearches();
+		
+		// 해당 검색어 삭제
+		recentSearches = recentSearches.filter(search => search !== term);
+		localStorage.setItem('recentSearches', JSON.stringify(recentSearches));
+
+		// 삭제 후 재조회
+		displayRecentSearches();
+	}
+
+	// 바로가기 & 자동완성
+	function shortcutAndAutoComplete(term){
+		
+		$(".total_search_result_list ul").hide();
+
+		$.ajax({
+			type: "GET",
+			url: "/integratedSearch/shortcutAndAutoComplete",
+			data : {
+				keyword : term
+			},
+			success: function(res) {
+
+				var shortcutList = res.shortcuts;
+				var autoCompleteList = res.autoCompletes;
+
+				$(".search_word_list").empty();
+				$(".search_menu_list").empty();
+
+				// 바로가기 존재 시
+				if(shortcutList && shortcutList.length > 0){
+					// 5회 제한
+					var count = 0;
+
+					shortcutList.forEach(function(row){
+						if(count >= 5) return;
+
+						var highlightData = highlightText(row.displayText, term);
+						var html = "";
+						html += "<li>";
+						html += "<a href='" + row.url + "'>";
+						html += "<i class='ico_menu'></i>";
+						html += "<span class='depth2_text'>" + highlightData + "</span> ";
+
+						// 메뉴
+						if(row.shortcutClsCd == "M"){
+							html += "<span>메뉴 바로가기</span>";
+						// 이벤트
+						}else{
+							html += "<span>이벤트 바로가기</span>";
+						}
+						html += "</a>";
+						html += "</li>";
+
+						$(".search_menu_list").append(html);
+						count++;
+					});
+
+					$(".search_menu_list").show();
+				}
+
+				// 자동완성 존재 시
+				if(autoCompleteList && autoCompleteList.length > 0){
+
+					// 5회 제안
+					var count = 0;
+
+					autoCompleteList.forEach(function(row){
+						if(count >= 5) return;
+
+						var highlightData = highlightText(row.kwd, term);
+						var li = $("<li>").append($("<a>").attr("class", "keywordLink").attr("data-value", row.kwd).attr("href", "#").append($("<i>").attr("class","ico_glass")).append($("<span>").html(highlightData)).on("click", function(event){var term = $(this).attr("data-value"); clickLinkKeyword(term, event); }));
+						$(".search_word_list").append(li);
+						count++;
+					});
+
+					$(".search_word_list").show();
+				}
+
+				// 바로가기 & 자동완성 미 존재 시
+				if( ( shortcutList.length + autoCompleteList.length ) <= 0 ){
+					var html = "<li>해당 단어로 시작되는 검색어가 없습니다.</li>";
+					$(".search_menu_list").append(html);
+					$(".search_menu_list").show();
+				}
+
+			}
+		 });
+	         
+	}
+	
+	// 검색 단어 하이라이트
+	function highlightText(text, keyword){
+		if(keyword.trim() === "") return text;
+		
+		var regex = new RegExp('(' + keyword + ')', 'gi');
+		return text.replace(regex, "<em>$1</em>");
+	}
+
+	// 통합검색
+	function integratedSearch(){
+
+		// 검색 대상 키워드
+		var term = $(".popSrchKeyword").val().trim();
+		$('[name="keyword"]').val(term);
+		
+		// 현재경로 체크
+		var currnetPath = window.location.pathname;
+		
+		// 검색어 미 존재 시
+		if(term == ''){
+			alert('검색어를 입력해주세요.');
+			return false;
+		}else{
+			// 브라우저에 localStorage 지원 시
+			if(storageStatus){
+				
+				// 최근 검색어 설정
+				setRecentSearch(term);
+			}
+
+			// 메인창 이동 및 리스트 조회
+			if(currnetPath != "/integratedSearch/main"){
+				// 검색 후 검색창 닫음
+				$('.total_search_top_area').prev('.pop_dim').hide();
+		        $('.total_search_top_area').hide();
+
+				// post submit 변경 20241209
+				$("#searchBoxForm").attr("action", "/integratedSearch/main").submit();
+
+			// 통합검색 메인창 > 리스트 재조회
+			}else{
+				// post submit
+				goSearchMain();
+			}
+
+			$('.total_search_box input').trigger('input');
+		}
+	}
+
+	// 검색 실행 post submit 변경 20241209
+	function goSearchMain(){
+	    $("#integratedSearchForm").attr("action", "/integratedSearch/main").submit();
+	}
+	
+	// 검색 툴팁 열기
+	function openTipLayer(tipId) {
+        if (getCookieIndex("LayerTip_"+tipId) == 'done') {
+        	$('.exp_tip_layer').attr('class', 'exp_tip_layer hidden');
+        } else {
+        	$('.exp_tip_layer').attr('class', 'exp_tip_layer');
+        }
+    }
+	
+	// 쿠키 설정
+    function setCookieIndex(name, value, expiredays) {
+        var todayDate = new Date();
+        todayDate.setDate( todayDate.getDate() + expiredays );
+        document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+    }
+
+	// 쿠키 가져오기
+    function getCookieIndex(name) {
+        var nameOfCookie = name + "=";
+        var x = 0;
+        while ( x <= document.cookie.length )
+        {
+            var y = (x+nameOfCookie.length);
+            if ( document.cookie.substring( x, y ) == nameOfCookie ) {
+                if ( (endOfCookie=document.cookie.indexOf( ";", y )) == -1 )
+                    endOfCookie = document.cookie.length;
+                return unescape( document.cookie.substring( y, endOfCookie ) );
+            }
+            x = document.cookie.indexOf( " ", x ) + 1;
+            if ( x == 0 )
+                break;
+        }
+        return "";
+    }	
+
+	// 키워드 전체 삭제
+    $('.keyword_del').on('click',function(e){
+		e.preventDefault();
+
+		// 검색어 초기화
+		$('.total_search_box input').val("");
+		// 전체 삭제 버튼 숨김 및 검색 노출 영역 설정
+		$('.total_search_box input').trigger('input');
+		$('.total_search_box input').trigger('click');
+		
+		// 검색어 입력창 포커스
+		$('.total_search_box input').focus();
+		
+	});
+
+
+</script>
+</div>
+	</div>
+</header><!-- path -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        var currentPath = window.location.pathname;
+        var $pathTitle = $(".path_2depth_wrap a.path_2depth span");
+
+        
+        if (currentPath.startsWith('/studyCafe/videoTutoring')
+            || currentPath.startsWith('/studyCafe/tutorApplyU')
+            || currentPath.startsWith('/studyCafe/tutorApplyS')) {
+            $pathTitle.text("화상튜터링")
+        }
+        else if (currentPath.startsWith('/studyCafe/resultView')
+            || currentPath.startsWith('/studyCafe/tutorApplyT')) {
+            $pathTitle.text("결과보기")
+        }
+        else if (currentPath.startsWith('/studyCafe/contest')) {
+            $pathTitle.text("공모전 모아보기")
+        }
+        else if (currentPath.startsWith('/studyCafe/univCounseling')) {
+            $pathTitle.text("대입상담")
+        }
+        else if (currentPath.startsWith('/consulting/consultingReqMain') 
+        		|| currentPath.startsWith('/consulting/consultingReqNewPost')
+        		|| currentPath.startsWith('/consulting/consultingReqEditPost')
+        		|| currentPath.startsWith('/consulting/consultingReqDetail')
+                || currentPath.startsWith('/consulting/consultingDataRoom')
+                || currentPath.startsWith('/consulting/consultingDataBestPractice')
+                || currentPath.startsWith('/consulting/consultingAnsDetail')
+                || currentPath.startsWith('/consulting/consultingDataShare')) {
+            $pathTitle.text("진로·학업 설계");
+        }
+        else if (currentPath.startsWith('/studyCafe/discussionContest')) {
+            $pathTitle.text("토론대회");
+        }
+        else if (currentPath.startsWith('/studyCafe/schlClubNotice')
+            || currentPath.startsWith('/studyCafe/schlClubApply')
+            || currentPath.startsWith('/studyCafe/schlClubAct')
+            || currentPath.startsWith('/studyCafe/schlClubQNA')) {
+            $pathTitle.text("함께 동아리");
+        }
+    });
+</script>
+<div style="display:none;" id="wary">[Menu(menuId=225, menuNm=현장의견 수렴, menuCd=Z, menuUrl=/sptReglImprvm/main, menuActiveUrl=/sptReglImprvm/main/sptReglImprvm/main/sptOpinion/clct, menuHgrnkId=null, sortSeq=-1, tagText=null, gnbMobClsNm=proposal_contest, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=[Menu(menuId=230, menuNm=학교 현장 규제 개선, menuCd=null, menuUrl=/sptReglImprvm/main, menuActiveUrl=/sptReglImprvm/main, menuHgrnkId=225, sortSeq=1, tagText=null, gnbMobClsNm=null, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=226, menuNm=인공지능 윤리, menuCd=null, menuUrl=/sptOpinion/clct, menuActiveUrl=/sptOpinion/clct, menuHgrnkId=225, sortSeq=2, tagText=null, gnbMobClsNm=null, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null)]), Menu(menuId=1, menuNm=정책제안, menuCd=A, menuUrl=/policy-proposal, menuActiveUrl=/policy-proposal/policy-proposal/policy-proposal/policyContestProposal/policy-discussion/policy-answer/policy-realization/eduConvrs, menuHgrnkId=null, sortSeq=1, tagText=, gnbMobClsNm=proposal, menuNewYn=Y, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=[Menu(menuId=7, menuNm=정책제안, menuCd=, menuUrl=/policy-proposal, menuActiveUrl=/policy-proposal, menuHgrnkId=1, sortSeq=1, tagText=, gnbMobClsNm=, menuNewYn=Y, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=223, menuNm=AI 교육정책 공모, menuCd=null, menuUrl=/policy-proposal/policyContestProposal, menuActiveUrl=/policy-proposal/policyContestProposal, menuHgrnkId=1, sortSeq=2, tagText=null, gnbMobClsNm=null, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=8, menuNm=정책토론, menuCd=null, menuUrl=/policy-discussion, menuActiveUrl=/policy-discussion, menuHgrnkId=1, sortSeq=3, tagText=null, gnbMobClsNm=null, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=9, menuNm=정책답변, menuCd=null, menuUrl=/policy-answer, menuActiveUrl=/policy-answer, menuHgrnkId=1, sortSeq=4, tagText=null, gnbMobClsNm=null, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=10, menuNm=정책실현, menuCd=, menuUrl=/policy-realization, menuActiveUrl=/policy-realization, menuHgrnkId=1, sortSeq=5, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=224, menuNm=교육진담 간담회, menuCd=null, menuUrl=/eduConvrs, menuActiveUrl=/eduConvrs, menuHgrnkId=1, sortSeq=6, tagText=null, gnbMobClsNm=null, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null)]), Menu(menuId=5, menuNm=스터디카페, menuCd=E, menuUrl=/studyCafe/videoTutoring, menuActiveUrl=/studyCafe/videoTutoring/studyCafe/readingMentoring/studyCafe/videoTutoring/consulting/consultingReqMain/studyCafe/contest/studyCafe/univCounseling/studyCafe/discussionContest/studyCafe/schlClubNotice, menuHgrnkId=null, sortSeq=2, tagText=, gnbMobClsNm=study, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=[Menu(menuId=233, menuNm=독서멘토링, menuCd=null, menuUrl=/studyCafe/readingMentoring, menuActiveUrl=/studyCafe/readingMentoring/studyCafe/readingMentoring/studyCafe/rmResultView, menuHgrnkId=5, sortSeq=-1, tagText=null, gnbMobClsNm=null, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=[Menu(menuId=234, menuNm=신청하기, menuCd=null, menuUrl=/studyCafe/readingMentoring, menuActiveUrl=/studyCafe/readingMentoring, menuHgrnkId=233, sortSeq=1, tagText=null, gnbMobClsNm=null, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=235, menuNm=결과보기, menuCd=null, menuUrl=/studyCafe/rmResultView, menuActiveUrl=/studyCafe/rmResultView, menuHgrnkId=233, sortSeq=2, tagText=null, gnbMobClsNm=null, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null)]), Menu(menuId=26, menuNm=화상튜터링, menuCd=null, menuUrl=/studyCafe/videoTutoring, menuActiveUrl=/studyCafe/videoTutoring/studyCafe/videoTutoring/studyCafe/resultView, menuHgrnkId=5, sortSeq=1, tagText=null, gnbMobClsNm=null, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=[Menu(menuId=222, menuNm=신청하기, menuCd=, menuUrl=/studyCafe/videoTutoring, menuActiveUrl=/studyCafe/videoTutoring, menuHgrnkId=26, sortSeq=1, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=27, menuNm=결과보기, menuCd=, menuUrl=/studyCafe/resultView, menuActiveUrl=/studyCafe/resultView, menuHgrnkId=26, sortSeq=2, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null)]), Menu(menuId=118, menuNm=진로·학업 설계, menuCd=, menuUrl=/consulting/consultingReqMain, menuActiveUrl=/consulting/consultingReqMain/eplanner/consulting/consultingReqMain/consulting/consultingDataRoom, menuHgrnkId=5, sortSeq=2, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=[Menu(menuId=150, menuNm=e-플래너, menuCd=, menuUrl=/eplanner, menuActiveUrl=/eplanner, menuHgrnkId=118, sortSeq=1, tagText=, gnbMobClsNm=, menuNewYn=Y, gnbPcShwYn=Y, gnbMobShwYn=N, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=124, menuNm=컨설팅, menuCd=null, menuUrl=/consulting/consultingReqMain, menuActiveUrl=/consulting/consultingReqMain, menuHgrnkId=118, sortSeq=2, tagText=null, gnbMobClsNm=null, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=N, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=123, menuNm=자료실, menuCd=, menuUrl=/consulting/consultingDataRoom, menuActiveUrl=/consulting/consultingDataRoom, menuHgrnkId=118, sortSeq=3, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=N, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null)]), Menu(menuId=196, menuNm=공모전 모아보기, menuCd=, menuUrl=/studyCafe/contest, menuActiveUrl=/studyCafe/contest, menuHgrnkId=5, sortSeq=3, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=67, menuNm=대입상담, menuCd=, menuUrl=/studyCafe/univCounseling, menuActiveUrl=/studyCafe/univCounseling, menuHgrnkId=5, sortSeq=4, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=133, menuNm=토론대회, menuCd=, menuUrl=/studyCafe/discussionContest, menuActiveUrl=/studyCafe/discussionContest, menuHgrnkId=5, sortSeq=5, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=134, menuNm=함께 동아리, menuCd=, menuUrl=/studyCafe/schlClubNotice, menuActiveUrl=/studyCafe/schlClubNotice/studyCafe/schlClubNotice/studyCafe/schlClubApply/studyCafe/schlClubAct/studyCafe/schlClubQNA, menuHgrnkId=5, sortSeq=6, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=[Menu(menuId=135, menuNm=공고 및 공지사항, menuCd=, menuUrl=/studyCafe/schlClubNotice, menuActiveUrl=/studyCafe/schlClubNotice, menuHgrnkId=134, sortSeq=1, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=N, gnbMobShwYn=N, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=136, menuNm=지원서 제출, menuCd=, menuUrl=/studyCafe/schlClubApply, menuActiveUrl=/studyCafe/schlClubApply, menuHgrnkId=134, sortSeq=2, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=N, gnbMobShwYn=N, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=137, menuNm=활동 기록, menuCd=, menuUrl=/studyCafe/schlClubAct, menuActiveUrl=/studyCafe/schlClubAct, menuHgrnkId=134, sortSeq=3, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=N, gnbMobShwYn=N, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=138, menuNm=Q&A, menuCd=, menuUrl=/studyCafe/schlClubQNA, menuActiveUrl=/studyCafe/schlClubQNA, menuHgrnkId=134, sortSeq=4, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=N, gnbMobShwYn=N, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null)])]), Menu(menuId=3, menuNm=함께톡톡, menuCd=C, menuUrl=/togetherTalkTalk/narrow, menuActiveUrl=/togetherTalkTalk/narrow/togetherTalkTalk/aidtBook/togetherTalkTalk/narrow/counseling-expert/togetherTalkTalk/shareInformation/togetherTalkTalk/shareMedia/nhg/nhgMain, menuHgrnkId=null, sortSeq=3, tagText=, gnbMobClsNm=counseling, menuNewYn=Y, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=[Menu(menuId=186, menuNm=AI 디지털교육자료, menuCd=, menuUrl=/togetherTalkTalk/aidtBook, menuActiveUrl=/togetherTalkTalk/aidtBook, menuHgrnkId=3, sortSeq=1, tagText=, gnbMobClsNm=, menuNewYn=Y, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=19, menuNm=답! 답해요, menuCd=, menuUrl=/togetherTalkTalk/narrow, menuActiveUrl=/togetherTalkTalk/narrow, menuHgrnkId=3, sortSeq=2, tagText=hot, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=20, menuNm=전문가상담, menuCd=, menuUrl=/counseling-expert, menuActiveUrl=/counseling-expert, menuHgrnkId=3, sortSeq=3, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=21, menuNm=정보나눔, menuCd=, menuUrl=/togetherTalkTalk/shareInformation, menuActiveUrl=/togetherTalkTalk/shareInformation, menuHgrnkId=3, sortSeq=4, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=22, menuNm=영상나눔, menuCd=, menuUrl=/togetherTalkTalk/shareMedia, menuActiveUrl=/togetherTalkTalk/shareMedia, menuHgrnkId=3, sortSeq=5, tagText=new, gnbMobClsNm=, menuNewYn=Y, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=68, menuNm=학부모 즐겨찾기, menuCd=, menuUrl=/nhg/nhgMain, menuActiveUrl=/nhg/nhgMain, menuHgrnkId=3, sortSeq=6, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null)]), Menu(menuId=4, menuNm=함께행복, menuCd=D, menuUrl=/commuSquare/happyTS, menuActiveUrl=/commuSquare/happyTS/commuSquare/happyTS/commuSquare/magazine/commuSquare/freeBBS/commuSquare/main/booksnap, menuHgrnkId=null, sortSeq=4, tagText=null, gnbMobClsNm=communication, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=[Menu(menuId=23, menuNm=행복한 함께학교, menuCd=null, menuUrl=/commuSquare/happyTS, menuActiveUrl=/commuSquare/happyTS, menuHgrnkId=4, sortSeq=1, tagText=null, gnbMobClsNm=null, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=111, menuNm=함께학교 매거진, menuCd=null, menuUrl=/commuSquare/magazine, menuActiveUrl=/commuSquare/magazine, menuHgrnkId=4, sortSeq=2, tagText=null, gnbMobClsNm=null, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=24, menuNm=자유게시판, menuCd=null, menuUrl=/commuSquare/freeBBS, menuActiveUrl=/commuSquare/freeBBS, menuHgrnkId=4, sortSeq=3, tagText=null, gnbMobClsNm=null, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=25, menuNm=커뮤니티, menuCd=, menuUrl=/commuSquare/main, menuActiveUrl=/commuSquare/main, menuHgrnkId=4, sortSeq=4, tagText=beta, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=211, menuNm=함께쓰담, menuCd=D, menuUrl=/booksnap, menuActiveUrl=/booksnap, menuHgrnkId=4, sortSeq=7, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null)]), Menu(menuId=2, menuNm=교원연구실, menuCd=B, menuUrl=/lectureShare/lectureShareMain, menuActiveUrl=/lectureShare/lectureShareMain/lectureShare/lectureShareMain/teacherRoom/studyData/teacherRoom/tchPrizeNotice/teacherRoom/researchGroup/teacherRoom/publicContest/teacherRoom/parentCounseling/teacherRoom/freeBBS, menuHgrnkId=null, sortSeq=5, tagText=, gnbMobClsNm=teacherlab, menuNewYn=Y, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=[Menu(menuId=90, menuNm=수업의 숲, menuCd=, menuUrl=/lectureShare/lectureShareMain, menuActiveUrl=/lectureShare/lectureShareMain/lectureShare/lectureShareMain/lectureShare/lectureShareMainAidt/lectureShare/maggClsReq/lectureShare/dataReq, menuHgrnkId=2, sortSeq=1, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=[Menu(menuId=91, menuNm=일반 수업, menuCd=, menuUrl=/lectureShare/lectureShareMain, menuActiveUrl=/lectureShare/lectureShareMain, menuHgrnkId=90, sortSeq=1, tagText=, gnbMobClsNm=, menuNewYn=Y, gnbPcShwYn=N, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=185, menuNm=AI·디지털교육자료 활용 수업, menuCd=, menuUrl=/lectureShare/lectureShareMainAidt, menuActiveUrl=/lectureShare/lectureShareMainAidt, menuHgrnkId=90, sortSeq=2, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=N, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=215, menuNm=최소 성취수준 보장지도 수업, menuCd=, menuUrl=/lectureShare/maggClsReq, menuActiveUrl=/lectureShare/maggClsReq, menuHgrnkId=90, sortSeq=3, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=N, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=92, menuNm=수업 자료 요청, menuCd=, menuUrl=/lectureShare/dataReq, menuActiveUrl=/lectureShare/dataReq, menuHgrnkId=90, sortSeq=4, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=N, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null)]), Menu(menuId=12, menuNm=자료나눔, menuCd=null, menuUrl=/teacherRoom/studyData, menuActiveUrl=/teacherRoom/studyData/teacherRoom/studyData/teacherRoom/workData/teacherRoom/schlAdministJobRduct, menuHgrnkId=2, sortSeq=2, tagText=null, gnbMobClsNm=null, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=[Menu(menuId=17, menuNm=교수학습자료, menuCd=null, menuUrl=/teacherRoom/studyData, menuActiveUrl=/teacherRoom/studyData, menuHgrnkId=12, sortSeq=1, tagText=null, gnbMobClsNm=null, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=N, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=18, menuNm=업무자료, menuCd=null, menuUrl=/teacherRoom/workData, menuActiveUrl=/teacherRoom/workData, menuHgrnkId=12, sortSeq=2, tagText=null, gnbMobClsNm=null, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=N, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=110, menuNm=학교 행정업무 경감, menuCd=null, menuUrl=/teacherRoom/schlAdministJobRduct, menuActiveUrl=/teacherRoom/schlAdministJobRduct, menuHgrnkId=12, sortSeq=3, tagText=null, gnbMobClsNm=null, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=N, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null)]), Menu(menuId=15, menuNm=수업혁신 교사상, menuCd=null, menuUrl=/teacherRoom/tchPrizeNotice, menuActiveUrl=/teacherRoom/tchPrizeNotice/teacherRoom/tchPrizeNotice/teacherRoom/tchPrizeApply/teacherRoom/tchPrizeQNA, menuHgrnkId=2, sortSeq=3, tagText=null, gnbMobClsNm=null, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=[Menu(menuId=77, menuNm=공고 및 공지사항, menuCd=null, menuUrl=/teacherRoom/tchPrizeNotice, menuActiveUrl=/teacherRoom/tchPrizeNotice, menuHgrnkId=15, sortSeq=1, tagText=null, gnbMobClsNm=null, menuNewYn=N, gnbPcShwYn=N, gnbMobShwYn=N, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=78, menuNm=지원서 제출 및 확인, menuCd=, menuUrl=/teacherRoom/tchPrizeApply, menuActiveUrl=/teacherRoom/tchPrizeApply, menuHgrnkId=15, sortSeq=2, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=N, gnbMobShwYn=N, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=79, menuNm=Q&A, menuCd=null, menuUrl=/teacherRoom/tchPrizeQNA, menuActiveUrl=/teacherRoom/tchPrizeQNA, menuHgrnkId=15, sortSeq=3, tagText=null, gnbMobClsNm=null, menuNewYn=N, gnbPcShwYn=N, gnbMobShwYn=N, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null)]), Menu(menuId=14, menuNm=전국 단위 연구회, menuCd=null, menuUrl=/teacherRoom/researchGroup, menuActiveUrl=/teacherRoom/researchGroup/teacherRoom/researchGroup/teacherRoom/researchShare/teacherRoom/researchQNA, menuHgrnkId=2, sortSeq=4, tagText=null, gnbMobClsNm=null, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=[Menu(menuId=74, menuNm=함께신청, menuCd=null, menuUrl=/teacherRoom/researchGroup, menuActiveUrl=/teacherRoom/researchGroup, menuHgrnkId=14, sortSeq=1, tagText=null, gnbMobClsNm=null, menuNewYn=N, gnbPcShwYn=N, gnbMobShwYn=N, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=75, menuNm=함께나눔, menuCd=null, menuUrl=/teacherRoom/researchShare, menuActiveUrl=/teacherRoom/researchShare, menuHgrnkId=14, sortSeq=2, tagText=null, gnbMobClsNm=null, menuNewYn=N, gnbPcShwYn=N, gnbMobShwYn=N, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=76, menuNm=Q&A, menuCd=null, menuUrl=/teacherRoom/researchQNA, menuActiveUrl=/teacherRoom/researchQNA, menuHgrnkId=14, sortSeq=3, tagText=null, gnbMobClsNm=null, menuNewYn=N, gnbPcShwYn=N, gnbMobShwYn=N, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null)]), Menu(menuId=13, menuNm=교육혁신 선도교사, menuCd=, menuUrl=/teacherRoom/publicContest, menuActiveUrl=/teacherRoom/publicContest, menuHgrnkId=2, sortSeq=5, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=191, menuNm=학부모상담 이렇게, menuCd=, menuUrl=/teacherRoom/parentCounseling, menuActiveUrl=/teacherRoom/parentCounseling, menuHgrnkId=2, sortSeq=6, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=16, menuNm=자유게시판, menuCd=, menuUrl=/teacherRoom/freeBBS, menuActiveUrl=/teacherRoom/freeBBS, menuHgrnkId=2, sortSeq=7, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null)]), Menu(menuId=6, menuNm=공지사항, menuCd=F, menuUrl=/playGround/viewAll, menuActiveUrl=/playGround/viewAll/playGround/viewAll/playGround/policyNotification/playGround/evtBBS/playGround/vote/playGround/playNotice/playGround/serviceQNA, menuHgrnkId=null, sortSeq=6, tagText=, gnbMobClsNm=notification, menuNewYn=Y, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=[Menu(menuId=28, menuNm=전체보기, menuCd=null, menuUrl=/playGround/viewAll, menuActiveUrl=/playGround/viewAll, menuHgrnkId=6, sortSeq=1, tagText=null, gnbMobClsNm=null, menuNewYn=N, gnbPcShwYn=N, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=29, menuNm=정책알림, menuCd=null, menuUrl=/playGround/policyNotification, menuActiveUrl=/playGround/policyNotification, menuHgrnkId=6, sortSeq=2, tagText=null, gnbMobClsNm=null, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=30, menuNm=함께이벤트, menuCd=null, menuUrl=/playGround/evtBBS, menuActiveUrl=/playGround/evtBBS/playGround/evtBBS/playGround/evtEPIG, menuHgrnkId=6, sortSeq=3, tagText=null, gnbMobClsNm=null, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=[Menu(menuId=192, menuNm=이벤트 신청 및 안내, menuCd=null, menuUrl=/playGround/evtBBS, menuActiveUrl=/playGround/evtBBS, menuHgrnkId=30, sortSeq=1, tagText=null, gnbMobClsNm=null, menuNewYn=N, gnbPcShwYn=N, gnbMobShwYn=N, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=193, menuNm=이벤트 후기, menuCd=null, menuUrl=/playGround/evtEPIG, menuActiveUrl=/playGround/evtEPIG, menuHgrnkId=30, sortSeq=2, tagText=null, gnbMobClsNm=null, menuNewYn=N, gnbPcShwYn=N, gnbMobShwYn=N, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null)]), Menu(menuId=80, menuNm=투표, menuCd=, menuUrl=/playGround/vote, menuActiveUrl=/playGround/vote, menuHgrnkId=6, sortSeq=4, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=31, menuNm=공지사항, menuCd=, menuUrl=/playGround/playNotice, menuActiveUrl=/playGround/playNotice, menuHgrnkId=6, sortSeq=5, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=32, menuNm=서비스 Q&A, menuCd=, menuUrl=/playGround/serviceQNA, menuActiveUrl=/playGround/serviceQNA, menuHgrnkId=6, sortSeq=6, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null)]), Menu(menuId=227, menuNm=함께학교란?, menuCd=H, menuUrl=/introduction, menuActiveUrl=/introduction/introduction/introGrt/introduction, menuHgrnkId=null, sortSeq=7, tagText=null, gnbMobClsNm=introduction, menuNewYn=N, gnbPcShwYn=N, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=[Menu(menuId=228, menuNm=인사말, menuCd=null, menuUrl=/introduction/introGrt, menuActiveUrl=/introduction/introGrt, menuHgrnkId=227, sortSeq=1, tagText=null, gnbMobClsNm=null, menuNewYn=N, gnbPcShwYn=N, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=229, menuNm=함께학교란?, menuCd=null, menuUrl=/introduction, menuActiveUrl=/introduction, menuHgrnkId=227, sortSeq=2, tagText=null, gnbMobClsNm=null, menuNewYn=N, gnbPcShwYn=N, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null)]), Menu(menuId=81, menuNm=마이페이지, menuCd=G, menuUrl=/myPage/myPageHome, menuActiveUrl=/myPage/myPageHome/myPage/myPageHome/myPage/myNotice/myPage/myPost/myPage/myComment/myPage/myTempPost/myPage/myComTshrBookmark/user/auth/myPage/notcSetting/myPage/myData/myPage/myComTshrDownHist/myPage/myTshrMlge/lectureShare/settlements/mileage/lectureShare/settlements/apply/myPage/myTshrLect/messages/received/messages/sent/messages/block, menuHgrnkId=null, sortSeq=null, tagText=null, gnbMobClsNm=null, menuNewYn=N, gnbPcShwYn=N, gnbMobShwYn=N, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=[Menu(menuId=82, menuNm=마이페이지 홈, menuCd=, menuUrl=/myPage/myPageHome, menuActiveUrl=/myPage/myPageHome, menuHgrnkId=81, sortSeq=10, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=N, gnbMobShwYn=N, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=83, menuNm=알림, menuCd=, menuUrl=/myPage/myNotice, menuActiveUrl=/myPage/myNotice, menuHgrnkId=81, sortSeq=20, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=N, gnbMobShwYn=N, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=84, menuNm=내 글, menuCd=, menuUrl=/myPage/myPost, menuActiveUrl=/myPage/myPost, menuHgrnkId=81, sortSeq=30, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=N, gnbMobShwYn=N, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=85, menuNm=내 댓글, menuCd=, menuUrl=/myPage/myComment, menuActiveUrl=/myPage/myComment, menuHgrnkId=81, sortSeq=40, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=N, gnbMobShwYn=N, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=87, menuNm=임시저장 글, menuCd=, menuUrl=/myPage/myTempPost, menuActiveUrl=/myPage/myTempPost, menuHgrnkId=81, sortSeq=50, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=N, gnbMobShwYn=N, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=94, menuNm=내 북마크, menuCd=, menuUrl=/myPage/myComTshrBookmark, menuActiveUrl=/myPage/myComTshrBookmark, menuHgrnkId=81, sortSeq=60, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=N, gnbMobShwYn=N, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=89, menuNm=회원정보, menuCd=, menuUrl=/user/auth, menuActiveUrl=/user/auth, menuHgrnkId=81, sortSeq=70, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=N, gnbMobShwYn=N, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=88, menuNm=알림 설정, menuCd=, menuUrl=/myPage/notcSetting, menuActiveUrl=/myPage/notcSetting, menuHgrnkId=81, sortSeq=80, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=N, gnbMobShwYn=N, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=86, menuNm=내 수업나눔, menuCd=, menuUrl=/myPage/myData, menuActiveUrl=/myPage/myData, menuHgrnkId=81, sortSeq=90, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=N, gnbMobShwYn=N, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=95, menuNm=내 다운로드 이력, menuCd=, menuUrl=/myPage/myComTshrDownHist, menuActiveUrl=/myPage/myComTshrDownHist, menuHgrnkId=81, sortSeq=91, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=N, gnbMobShwYn=N, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=96, menuNm=내 마일리지, menuCd=, menuUrl=/myPage/myTshrMlge, menuActiveUrl=/myPage/myTshrMlge, menuHgrnkId=81, sortSeq=92, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=N, gnbMobShwYn=N, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=206, menuNm=내 마일리지 확인, menuCd=, menuUrl=/lectureShare/settlements/mileage, menuActiveUrl=/lectureShare/settlements/mileage, menuHgrnkId=81, sortSeq=93, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=205, menuNm=내 마일리지 정산, menuCd=, menuUrl=/lectureShare/settlements/apply, menuActiveUrl=/lectureShare/settlements/apply, menuHgrnkId=81, sortSeq=94, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=97, menuNm=내 연수실적, menuCd=, menuUrl=/myPage/myTshrLect, menuActiveUrl=/myPage/myTshrLect, menuHgrnkId=81, sortSeq=95, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=N, gnbMobShwYn=N, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=213, menuNm=받은쪽지함, menuCd=, menuUrl=/messages/received, menuActiveUrl=/messages/received, menuHgrnkId=81, sortSeq=96, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=212, menuNm=보낸쪽지함, menuCd=, menuUrl=/messages/sent, menuActiveUrl=/messages/sent, menuHgrnkId=81, sortSeq=97, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null), Menu(menuId=214, menuNm=수신차단 관리, menuCd=, menuUrl=/messages/block, menuActiveUrl=/messages/block, menuHgrnkId=81, sortSeq=98, tagText=, gnbMobClsNm=, menuNewYn=N, gnbPcShwYn=Y, gnbMobShwYn=Y, useYn=Y, crtnDtm=null, crtnUserId=null, lstChngDtm=null, lstChngUserId=null, subMenuList=null)])]</div>
+<div class="path">
+    <ul>
+        <li class="m_left"><a href="javascript:history.back()">뒤로가기</a></li>
+        <li class="pc_left"><a href="javascript:history.back()">뒤로가기</a></li>
+        <!-- <li class="home"><a href="#none;">홈</a></li> -->
+        <li class="link">
+            <a href="/studyCafe/videoTutoring" class="path_1depth"><span>스터디카페</span></a>
+            <i class="path_line"></i>
+            <div class="path_2depth_wrap">
+                <a href="javascript:;" class="path_2depth"><span></span></a>
+                        <div class="path_2depth_list">
+                            <ul>
+                            <li>
+                                        <a href="/studyCafe/readingMentoring">
+                                            <span>독서멘토링</span>
+                                        </a>
+                                    </li>
+                                <li>
+                                        <a href="/studyCafe/videoTutoring">
+                                            <span>화상튜터링</span>
+                                        </a>
+                                    </li>
+                                <li>
+                                        <a href="/consulting/consultingReqMain">
+                                            <span>진로·학업 설계</span>
+                                        </a>
+                                    </li>
+                                <li>
+                                        <a href="/studyCafe/contest">
+                                            <span>공모전 모아보기</span>
+                                        </a>
+                                    </li>
+                                <li>
+                                        <a href="/studyCafe/univCounseling">
+                                            <span>대입상담</span>
+                                        </a>
+                                    </li>
+                                <li>
+                                        <a href="/studyCafe/discussionContest">
+                                            <span>토론대회</span>
+                                        </a>
+                                    </li>
+                                <li>
+                                        <a href="/studyCafe/schlClubNotice">
+                                            <span>함께 동아리</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                        </div>
+                    </div>
+        </li>
+    </ul>
+</div><!-- path //-->
+<!-- 컨텐츠 -->
+<div class="contents policy_board study"> <!-- 스터디카페 클래스 적용 확인 20240514 -->
+    <div class="policy_head">
+        <div class="txt_box bg2">
+            <h2>스터디카페</h2>
+            <P>내일을 준비하는 오늘의 맞춤학습 <br class="only_m">'독서멘토링'을 소개합니다.</P> <!-- 스터디카페 문구 적용 확인 20240514 -->
+            <div class="img_area study"></div> <!-- 스터디카페 이미지 클래스 적용 확인 20240514 -->
+        </div>
+        <div class="bd-wave-wrapper">
+            <div class="bd-wave bd-wave-3" data-background="https://www.togetherschool.go.kr/images/sub/wave-white-2.png" style="background-image: url(&quot;https://www.togetherschool.go.kr/images/sub/wave-white-2.png&quot;);"></div>
+            <div class="bd-wave bd-wave-3" data-background="https://www.togetherschool.go.kr/images/sub/wave-white.png" style="background-image: url(&quot;https://www.togetherschool.go.kr/images/sub/wave-white.png&quot;);"></div>
+        </div>
+    </div>
+
+    <div class="sub_cont_wrap">
+        <div class="sub_left">
+            <!-- lnb -->
+            <script type="text/javascript">
+    $(document).ready(function() {
+        var currentPath = window.location.pathname;
+        var $lnbMobTitle = $(".lnb_wrap.mob a.selected_menu span");
+
+        
+        if (currentPath.startsWith('/studyCafe/videoTutoring')
+            || currentPath.startsWith('/studyCafe/tutorApplyU')
+            || currentPath.startsWith('/studyCafe/tutorApplyS')) {
+            $lnbMobTitle.text("화상튜터링");
+        }
+        else if (currentPath.startsWith('/studyCafe/resultView')
+            || currentPath.startsWith('/studyCafe/tutorApplyT')) {
+            $lnbMobTitle.text("결과보기");
+        }
+        else if (currentPath.startsWith('/studyCafe/univCounseling')) {
+            $lnbMobTitle.text("대입상담");
+        }
+        else if (currentPath.startsWith('/consulting/consultingReqMain') 
+        		|| currentPath.startsWith('/consulting/consultingReqNewPost')
+        		|| currentPath.startsWith('/consulting/consultingReqEditPost')
+        		|| currentPath.startsWith('/consulting/consultingReqDetail')
+                || currentPath.startsWith('/consulting/consultingDataRoom')
+                || currentPath.startsWith('/consulting/consultingDataBestPractice')
+                || currentPath.startsWith('/consulting/consultingAnsDetail')
+                || currentPath.startsWith('/consulting/consultingDataShare')) {
+            $lnbMobTitle.text("진로·학업 설계");
+        }
+        else if (currentPath.startsWith('/studyCafe/discussionContest')) {
+            $lnbMobTitle.text("토론대회");
+        }
+		else if (currentPath.startsWith('/studyCafe/schlClubNotice')
+			|| currentPath.startsWith('/studyCafe/schlClubApply')
+			|| currentPath.startsWith('/studyCafe/schlClubAct')
+			|| currentPath.startsWith('/studyCafe/schlClubQNA')) {
+			$lnbMobTitle.text("함께 동아리");
+		}
+    });
+</script>
+
+<!-- lnb : pc -->
+    <div class="lnb_wrap pc">
+        <h3 class="lnb_depth_1">스터디카페</h3>
+        <ul class="lnb_depth_2">
+            <li class="active">
+		                    <a href="/studyCafe/readingMentoring">
+		                    독서멘토링</a>
+		                    </li>
+	                <li >
+		                    <a href="/studyCafe/videoTutoring">
+		                    화상튜터링</a>
+		                    </li>
+	                <li >
+		                    <a href="/consulting/consultingReqMain">
+		                    진로·학업 설계</a>
+		                    </li>
+	            	<li >
+		                    <a href="/studyCafe/contest">
+		                    공모전 모아보기</a>
+		                    </li>
+	                <li >
+		                    <a href="/studyCafe/univCounseling">
+		                    대입상담</a>
+		                    </li>
+	                <li >
+		                    <a href="/studyCafe/discussionContest">
+		                    토론대회</a>
+		                    </li>
+	                <li >
+		                    <a href="/studyCafe/schlClubNotice">
+		                    함께 동아리</a>
+		                    </li>
+	                </ul>
+    </div>
+
+    <!-- lnb : mobile -->
+    <div class="lnb_wrap mob">
+        <a href="#none;" class="selected_menu"><span class="value"></span></a>
+        <ul class="lnb_depth_2" style="display: none;">
+            <li class="active">
+                    <a href="/studyCafe/readingMentoring">
+                    독서멘토링</a>
+                </li>
+            <li >
+                    <a href="/studyCafe/videoTutoring">
+                    화상튜터링</a>
+                </li>
+            <li >
+                    <a href="/consulting/consultingReqMain">
+                    진로·학업 설계</a>
+                </li>
+            <li >
+                    <a href="/studyCafe/contest">
+                    공모전 모아보기</a>
+                </li>
+            <li >
+                    <a href="/studyCafe/univCounseling">
+                    대입상담</a>
+                </li>
+            <li >
+                    <a href="/studyCafe/discussionContest">
+                    토론대회</a>
+                </li>
+            <li >
+                    <a href="/studyCafe/schlClubNotice">
+                    함께 동아리</a>
+                </li>
+            </ul>
+    </div>
+<!-- //lnb -->
+        </div>
+        <div class="sub_right">
+            <!-- 서브 타이틀 -->
+            <h4 class="sub_cont_tit">독서멘토링</h4>
+
+             <!-- tab -->
+             <div class="tab_style_wrap">
+        <ul class="tab_list swiper-wrapper">
+            <li class="swiper-slide active">
+                    <a href="/studyCafe/readingMentoring" >신청하기</a>
+                </li>
+            <li class="swiper-slide">
+                    <a href="/studyCafe/rmResultView" >결과보기</a>
+                </li>
+            </ul>
+    </div>
+<!-- //tab -->
+
+            <div class="tutoring-container">
+                <!-- 버튼 영역 추가 20240524 -->
+                <div class="btn_right_area">
+                    <button type="button" class="btn b_refresh" id="btnRefresh">새로고침</button>
+                    <button type="button" class="btn b_check_qualifi">자격요건확인</button>
+                </div>
+                <!-- //버튼 영역 -->
+
+                <!-- 독서멘토링 소개 화면 HTML Start -->
+                <link rel="stylesheet" href="/css/readingMentoring.css">
+                <div class="reading-mentoring">
+                    <!-- 상단 영역 -->
+                    <div class="rm-top">
+                        <div class="rm-top__title">
+                            <span class="t1">2026년<strong>독서멘토링</strong></span>
+                            <span class="t2"><span class="hidden">멘토 멘티 모집!</span></span>
+                        </div>
+
+                        <div class="rm-top__buttons">
+                            <a href="#" id="btnMentoReqT" class="rm-top__mento-req"><!--  disabled -->
+                                <span>교사 멘토 신청하기</span>
+                            </a>
+                            <a href="#" id="btnMenteeReq" class="rm-top__mentee-req"><!--  disabled  -->
+                                <span>멘티 신청하기</span>
+                            </a>
+                            <a href="https://tutoring.ebsoc.co.kr/tutoring/about" class="rm-top__link">
+                                <span><strong>모집기간, 신청자격</strong> 등 자세한 내용은</span>
+                                <span>독서멘토링 사이트 바로가기</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 독서멘토링은? -->
+                    <div class="rm-about">
+                        <strong class="rm-about__tit">독서멘토링은?</strong>
+                        <p class="rm-about__desc">현직 교사 멘토가 멘티의 자기주도 독서습관을 지원하는 개인 맞춤형 멘토링 서비스입니다.</p>
+                        <ul class="rm-about__list">
+                            <li class="rm-about__list-item rm-about__list-item--icon1">
+                                <strong>[예습] 자기주도 독서습관</strong>
+                                <p>자신의 진로와 연관된 책을 선택하고 관심 주제를 중심으로 독서 습관을 형성하며, 멘토에게 궁금한 점을 질문할 수 있도록 준비</p>
+                            </li>
+                            <li class="rm-about__list-item rm-about__list-item--icon2">
+                                <strong>[독서멘토링] 교사 멘토</strong>
+                                <p>독서 습관이 비슷한 멘티들과 소규모 그룹을 이루어 멘토링 진행 / 독서 환경을 다지고 자유롭게 소통하는 쌍방향 맞춤 수업</p>
+                            </li>
+                            <li class="rm-about__list-item rm-about__list-item--icon3">
+                                <strong>학습 관리</strong>
+                                <p>멘티의 학습 이력 등을 멘토, 학부모와 함께 공유하며 맞춤형 학습관리를 지원</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 멘토/멘티 신청 방법 안내 -->
+                    <div class="rm-steps">
+                        <strong class="rm-steps__tit">멘토/멘티 신청 방법 안내</strong>
+                        <ol class="rm-steps__list">
+                            <li class="rm-steps__list-item">
+                                <div class="rm-steps__step-head">
+                                    <span>STEP 1</span>회원가입
+                                </div>
+                                <div class="rm-steps__step-body">
+                                    <p>
+                                        독서멘토링 멘토 &middot; 멘티 신청을 위해서는 <span class="underline">함께학교</span>와 <span class="underline">EBS 회원가입</span>이 필요합니다.<br>
+                                        회원가입이 되어 있지 않은 경우 회원가입 후 멘토 &middot; 멘티 신청을 해주세요.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="rm-steps__list-item">
+                                <div class="rm-steps__step-head">
+                                    <span>STEP 2</span>멘토 / 멘티 신청
+                                </div>
+                                <div class="rm-steps__step-body">
+                                    <p class="rm-steps__path">
+                                        함께학교 사이트 → 스터디카페 → 독서멘토링 → 멘토/멘티신청
+                                    </p>
+                                    <p>
+                                        개인정보, 수업시간 등을 작성하여 제출해주세요.<br>
+                                        <small>* 서류심사 및 면접(화상, 전화 등)을 통해 선정됩니다.</small>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="rm-steps__list-item">
+                                <div class="rm-steps__step-head">
+                                    <span>STEP 3</span>합격 상태 확인
+                                </div>
+                                <div class="rm-steps__step-body">
+                                    <p class="rm-steps__path">
+                                        함께학교 사이트 → 스터디카페 → 독서멘토링 → 결과보기
+                                    </p>
+                                    <p>
+                                        신청 자격 및 기본 요건 검토를 통과한 상태로, 최종 선정 전 단계입니다.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="rm-steps__list-item">
+                                <div class="rm-steps__step-head">
+                                    <span>STEP 4</span>선정 결과 확인
+                                </div>
+                                <div class="rm-steps__step-body">
+                                    <p class="rm-steps__path">
+                                        함께학교 사이트 → 스터디카페 → 독서멘토링 → 결과보기
+                                    </p>
+                                    <p>
+                                        멘토 &middot; 멘티 신청 진행 상황 및 선정 결과를 확인하세요.<br>
+                                        선정 된었다면 EBS 튜터링 사이트에서 다음 절차를 확인하세요!
+                                    </p>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <!-- 독서멘토링 활동 가이드 -->
+                    <div class="rm-guides">
+                        <div class="rm-guides__tit">독서멘토링 활동 가이드</div>
+                        <div class="rm-guides__buttons">
+                            <a class="rm-guides__button rm-guides__button-mento" id="mentoLink" href="https://tutoring.ebsoc.co.kr/cs/notice/27"><span>교사 멘토</span></a>
+                            <a class="rm-guides__button rm-guides__button-mentee" id="menteeLink" href="https://tutoring.ebsoc.co.kr/cs/notice/28"><span>멘티</span></a>
+                        </div>
+                    </div>
+
+                    <!-- 유의사항 -->
+                    <div class="rm-notice">
+                        <div class="rm-notice__tit">유의사항</div>
+                        <ul class="rm-notice__lists">
+                            <li class="rm-notice__list">멘토 &middot; 멘티 신청서 제출 후에는 수정이 불가능합니다.</li>
+                            <li class="rm-notice__list">지원서의 내용이나 증빙서류에 허위 사실이 발견될 경우 선정이 취소될 수 있습니다.</li>
+                            <li class="rm-notice__list">「아동 &middot; 청소년의 성보호에 관한 법률」등 관련 결격사유에 해당하는 분은 선정이 취소될 수 있습니다.</li>
+                            <li class="rm-notice__list">상습적인 지각, 무단 결석 등 독서멘토링에 불성실하게 참여할 경우 활동 중단 등 불이익이 발생할 수 있습니다.</li>
+                            <li class="rm-notice__list">중도 하차의 경우, 추후 지원 시 불이익이 발생할 수 있습니다.</li>
+                            <li class="rm-notice__list">자세한 내용은 독서멘토링 사이트 및 활동 가이드에 있습니다.<br>신청 전 반드시 확인해주세요.</li>
+                            <li class="rm-notice__list">독서멘토링 신청 시, 작성한 EBS 아이디는 변경이 불가합니다.</li>
+                        </ul>
+                    </div>
+
+                    <!-- 문의사항 -->
+                    <div class="rm-customer">
+                        <div class="rm-customer__tit">문의사항</div>
+                        <div class="rm-customer__call"><strong>독서멘토링 관리센터</strong><span>02-526-2104</span></div>
+                        <div class="rm-customer__kakao"><a href="https://pf.kakao.com/_xhljtG/chat">카카오톡 채널 바로가기</a></div>
+                        <div class="rm-customer__time">
+                            <div><strong>운영시간</strong> <span>9:00 ~ 18:00</span></div>
+                            <div><strong>점심시간</strong> <span>12:00 ~ 13:00</span></div>
+                            <div>주말, 공휴일 제외</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 독서멘토링 소개 화면 HTML End -->
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- 자격요건 팝업 20240528 추가 -->
+<div class="pop_dim"></div>
+<div class="popup noti_default pop_chk_qualifi">
+    <div class="popup_wrap">
+        <div class="pop_tit">
+            <h3>자격요건 확인</h3>
+            <a href="javascript:;" class="pop_close">팝업 닫기</a>
+        </div>
+        <div class="pop_cont">
+            <div class="top_area">
+                <p>독서멘토링 서비스를 이용하시려면 아래 자격이 필요합니다.</p>
+                <br>
+                <p><strong>1. EBS 회원</strong> (<a href="https://ebs.co.kr" target="_blank" class="go_under">회원가입 바로가기</a>)</p>
+                <br>
+                <p><strong>2. 함께학교 회원</strong></p>
+                <br>
+                <p class="mt_10">※ 2개 사이트 회원가입 완료 후 독서멘토링 신청이 가능합니다.</p>
+            </div>
+            <div class="bottom_area">
+                <div class="btn_area">
+                    <button type="button" class="btn b_yes" id="btnConfirm"><span>확인</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- //자격요건 팝업 -->
+
+<script>
+    /************************************************************
+     * Make Date    : 2024.05.28
+     * Depth        : 스터디카페 > 화상튜터링
+     * Description  : 스터디카페 내 화상튜터링 메인 페이지
+     *-----------------------------------------------------------
+     * Modify Date  Modifier    Modify Decription
+     *-----------------------------------------------------------
+     * 2024.05.28   LTH         신규작성
+     * 2024.09.02   LTH         화상튜터링 멘티만 신청가능 버전
+     *-----------------------------------------------------------
+     ***********************************************************/
+
+    /************************************************************
+     * global variable 영역
+     ***********************************************************/
+    let fvLoginUserSn = '1000001657';
+    let fvReqYn = false; //중복신청을 막기위한 변수
+    let fvAppPeriodChk = false; //신청기간 확인을 위한 변수
+    let fvAcptSn = "";
+
+    /************************************************************
+     * onload 영역
+     ***********************************************************/
+    $(document).ready(function(){
+        fnInitComp();
+        fnRetrieveAppPeriodChk();
+    });
+
+    /************************************************************
+     * component event 영역
+     ***********************************************************/
+    /**
+     * 화면 로드 시 component event init
+     */
+    function fnInitComp()
+    {
+    	//"멘토(교사) 신청하기" 버튼 클릭 시
+        $('#btnMentoReqT').on('click', function(event){
+            event.preventDefault();
+            if(fvReqYn)
+            {
+                alert("신청내역이 존재합니다.\n결과보기 화면으로 이동합니다.")
+                window.location.href = "/studyCafe/rmResultView";
+            }
+            else
+            {
+                if(fvAppPeriodChk)
+                {
+                    window.location.href = "/studyCafe/rmApplyT";
+                }
+                else
+                {
+                    alert("신청기간이 아닙니다.");
+                }
+
+            }
+        });
+
+        //"멘티 신청하기" 버튼 클릭 시
+        $('#btnMenteeReq').on('click', function(event){
+            event.preventDefault();
+            
+            if(fvReqYn)
+            {
+                alert("신청내역이 존재합니다.\n결과보기 화면으로 이동합니다.")
+                window.location.href = "/studyCafe/rmResultView";
+            }
+            else
+            {
+            	if(fvAppPeriodChk){
+            		window.location.href = "/studyCafe/rmApplyS";
+                }else{
+                	alert("신청기간이 아닙니다.");
+				}
+            }
+        });
+
+        //"새로고침" 버튼 클릭 시
+        $('#btnRefresh').on('click', function(event){
+            fnRetrieveApplyStatus();
+        });
+
+        // 자격요건 팝업 20240528 추가
+        $('.b_check_qualifi').on('click', function(){
+            $('.pop_chk_qualifi').prev('.pop_dim').show();
+            $('.pop_chk_qualifi').show();
+        });
+
+        $('.pop_chk_qualifi .pop_close').on('click', function(){
+            $('.pop_chk_qualifi').prev('.pop_dim').hide();
+            $('.pop_chk_qualifi').hide();
+        });
+
+        $('#btnConfirm').on('click', function(){
+            $('.pop_chk_qualifi').prev('.pop_dim').hide();
+            $('.pop_chk_qualifi').hide();
+        });
+    }
+
+    /************************************************************
+     * transaction 및 callback 영역
+     ***********************************************************/
+    /**
+     * 신청가능기간인지 체크한다.
+     */
+    function fnRetrieveAppPeriodChk()
+    {
+        $.ajax({
+            url: "/studyCafe/retrieveAppPeriodChk",
+            type: 'POST',
+            data: null,
+            processData: false,
+            contentType: false,
+            success: function (result) {
+                if(result.length > 0)
+                {
+                	if(result[0].rmAcptSn > 0)
+                    {
+                        fvAcptSn = result[0].rmAcptSn;
+                		fvAppPeriodChk = true;
+					}
+					
+                	if(result[0].rtAcptYn == "Y")
+                    {
+                		$('#btnMentoReqT').removeClass("disabled");
+					}
+
+                	if(result[0].rsAcptYn == "Y")
+                    {
+                		$('#btnMenteeReq').removeClass("disabled");
+					}
+                }
+                fnRetrieveApplyStatus();
+            },
+            error: function (xhr) {
+            }
+        });
+    }
+
+    /**
+     * 사용자의 현재 신청상태를 가져온다.
+     */
+    function fnRetrieveApplyStatus()
+    {
+        const formData = new FormData();
+        formData.append('userSn', fvLoginUserSn);
+        formData.append('acptSn', fvAcptSn);
+
+        $.ajax({
+            url: "/studyCafe/retrieveApplyStatus",
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (result) {
+                fnSetApplyStatus(result);
+            },
+            error: function (xhr) {
+            }
+        });
+    }
+
+    /************************************************************
+     * user custom function 영역
+     ***********************************************************/
+    /**
+     * 사용자의 현재 신청상태를 보여준다.
+     * @param {jsonObj} result 서버로부터 받아온 데이터
+     */
+    function fnSetApplyStatus(result)
+    {
+        
+        if(result.length == 0)
+        {
+            fvReqYn = false;
+        }
+        else
+        {
+         	// 임시저장
+            if(result[0].progrsSttus == "A") 
+            {
+                fvReqYn = false;
+            }
+         	// 반려
+            else if(result[0].progrsSttus == "D") 
+            {
+                fvReqYn = false;
+            }
+         	// 신청
+            else if(result[0].progrsSttus == "E") 
+            {
+                fvReqYn = true;
+            }
+         	// 재신청
+            else if(result[0].progrsSttus == "G") 
+            {
+                fvReqYn = true;
+            }
+            // 합격
+            else if(result[0].progrsSttus == "P") 
+            {
+                fvReqYn = true;
+            }
+         	// 선정
+            else if(result[0].progrsSttus == "F") 
+            {
+                fvReqYn = true;
+            }
+         	// 탈락
+            else if(result[0].progrsSttus == "H") 
+            {
+                alert("선정되지 못했습니다.")
+                fvReqYn = true;
+            }
+        }
+    }
+</script><!-- footer -->
+    <footer>
+        <div class="footer_inner">
+        	<div class="footer_inner_grid">
+	        	<div class="footer_info_wrap">
+		            <div class="list_inner_wrap">
+		                <div class="policy">
+		                    <ul class="list_1">
+		                        <li><a href="/policy/termsInfo">이용약관</a></li>
+		                        <li><a href="/policy/privacy">개인정보처리방침</a></li>
+		                        <li><a href="/policy/youthInfo">청소년 보호정책</a></li>
+		                        <li class="introduce"><a href="/introduction">함께학교란?</a></li>
+		                    </ul>
+		                    <ul class="list_2">
+		                        <li class="sns_btn app_link"><a href="https://play.google.com/store/apps/details?id=kr.co.ebs.togetherschool&hl=ko-KR" target="_blank" class="google"><span>안드로이드 앱 다운로드</span></a></li>
+		                        <li class="sns_btn app_link"><a href="https://apps.apple.com/us/app/함께학교/id6473333375" target="_blank" class="apple"><span>애플 앱 다운로드</span></a></li>
+		                        <li class="sns_btn app_link"><a href="https://www.instagram.com/togetherschool_moe/" target="_blank" class="insta"><span>인스타그램 바로가기</span></a></li>
+		                        <li class="sns_btn app_link"><a href="https://www.youtube.com/@togetherschool_moe" target="_blank" class="youtube"><span>유튜브 바로가기</span></a></li>
+		                    </ul>
+		                </div>
+		                <div class="family_site">
+		                    <a href="https://educator.edunet.net/" target="_blank" class="btn_family_go">함께학교 지식샘터</a>
+		                    <!-- <select name="" id="">
+		                        <option value="ko">한국어</option>
+		                        <option value="en">영어</option>
+		                        <option value="jp">일본어</option>
+		                    </select>
+		                    <div id="google_translate_element"></div> -->
+		                </div>
+		            </div>
+		            <div class="info">
+		                <div class="footer_logo_area">
+		                    <a href="https://www.moe.go.kr/" class="footer_logo" target="_blank">
+								<img src="https://www.togetherschool.go.kr/images/common/footer_logo_edu.svg" class="light_img" alt="교육부 로고"> <!-- //이미지 변경, 클래스 추가-20251125 -->
+								<img src="https://www.togetherschool.go.kr/images/common/footer_logo_edu_dark.svg" class="dark_img" alt="교육부 로고"> <!-- //다크모드용 이미지 추가-20251125 -->
+		                    </a>
+		                    <a href="https://www.ebs.co.kr/" class="footer_logo" target="_blank">
+								<img src="https://www.togetherschool.go.kr/images/common/footer_logo_ebs.svg" class="light_img" alt="EBS 로고"> <!-- //이미지 변경, 클래스 추가-20251125 -->
+								<img src="https://www.togetherschool.go.kr/images/common/footer_logo_ebs_dark.svg" class="dark_img" alt="EBS 로고"> <!-- //다크모드용 이미지 추가-20251125 -->
+		                    </a>
+		                </div>
+		                <ul>
+		                	<li class="fw_b">※ 본 서비스의 번역은 AI API를 통해 제공되며, 정확하지 않을 수 있습니다.</li>
+		                    <li>30119 세종특별자치시 갈매로 408, 14동 정부세종청사 교육부<span class="blank only_pc"></span>사업자등록번호 102-83-00181</li>
+		                    <li>10393 경기도 고양시 일산동구 한류월드로 281 한국교육방송공사<span class="blank only_pc"></span>사업자등록번호 : 229-82-01343</li>
+		                    <li>이용문의 : hotline@ebs.co.kr<span class="blank"></span>고객센터 : 1588-1580<span class="blank"></span>부가통신사업신고 : 10077<span class="blank"></span>통신판매업신고 : 2017-고양일산동-1415</li> <!-- 2023-11-17 텍스트 수정 -->
+		                    <li class="copy"><a href="javascript: $('#pushDebugConsole').show();">Copyright</a> ⓒ 교육부 & EBS All Rights <span id="pushDebug">Reserved.</span></li>
+		                </ul>
+		            </div>
+		        </div><!-- End of footer_info_wrap -->
+
+				<div class="ismsp_area"> <!-- 인증마크 영역 추가 20250509 -->
+				    <div><img src="https://www.togetherschool.go.kr/images/common/img_ismsp.png" alt=""></div>
+				    <div>
+				        <p>[인증범위] EBS 교육 포털 웹서비스</p>
+				        <p>[유효기간] 2025.04.16 ~ 2028.04.15</p>
+				    </div>
+				</div>
+	        </div><!-- End of footer_inner_grid -->
+            <div id="pushDebugConsole" style="display: none; width: 100%; float: clear;"></div>
+        </div>
+
+        <div class="qbanner_wrap qlink open" style="display:none;"> <!-- open이 초기 상태 -->
+            <a class="btn_qlink"><i class="qlink_open"></i><span class="qlink_close">Quick Link</span></a>
+            <div class="qlink_open_list">
+                <ul>
+                	<li><a href="https://dev-free.togetherschool.go.kr" target="_blank">함께해용</a></li>
+                		<li><a href="/nhg/nhgMain">학부모 즐겨찾기</a></li>
+                	 <!-- <li><a href="/playGround/policyNotification?srchType=TITLE&srchKeyword=늘봄학교" target="_blank" >늘봄학교</a></li> -->
+                    <li><a href="https://educator.edunet.net/" target="_blank" >지식샘터</a></li>
+                    </ul>
+            </div>
+        </div>
+        
+		<div class="qbanner_container" style="display: none;">
+	    	<!-- 인기검색어 -->
+	        <div class="qbanner_wrap qlink popular_searches open" id="popular_searches_banner" style="display: none;"> <!-- open이 초기 상태 -->
+	        	<a class="btn_qlink"><i class="qlink_open"></i><span class="qlink_close">인기검색어</span></a>
+	            <div class="qlink_open_list">
+	                <strong>인기검색어</strong>
+	                <ul></ul>
+	            </div>
+	        </div>
+	        <!-- //인기검색어 -->
+	
+	        <!-- 이벤트 배너 -->
+	        <div class="qbanner_wrap event_banner" id="event_banner" style="display: none;">
+	            <a class="btn_qbanner">
+	                <i class="ico_search_event"></i>
+	                <span>이벤트</span>
+	            </a>
+	            <button class="btn_close_boxS"></button>
+	        </div>
+	        <!-- //이벤트 배너 -->
+	    </div>
+
+        <a class="btn_floating">
+            <span>TOP</span>
+        </a>
+       
+    </footer>
+    <!-- footer //-->
+
+<!-- 교사 인증 팝업 -->
+<!-- //교사 인증 팝업 -->
+
+<!-- 쪽지보내기 팝업 -->
+<div class="pop_dim"></div>
+<div class="popup noti_default pop_note">
+    <div class="popup_wrap">
+        <div class="pop_tit">
+            <h3>쪽지 보내기</h3>
+            <a href="javascript:;" class="pop_close">팝업 닫기</a>
+        </div>
+        <div class="pop_cont">
+            <div class="bottom_area">
+                <div class="content_area">
+                    <ul class="form_area">
+                        <li>
+                            <label for="area_msgRcvrNcnm" class="label">받는 이</label>
+                            <div class="text" id="area_msgRcvrNcnm"></div>
+                        </li>
+                        <li>
+                            <label for="msg_title" class="label">제목</label>
+                            <input type="text" id="msg_title" name="msg_title" placeholder="제목을 입력해주세요.">
+                        </li>
+                        <li>
+                            <textarea id="msg_content" name="msg_content" placeholder="내용을 입력해주세요." class="textarea"></textarea>
+                        </li>
+                    </ul>
+                    <div class="btn_area">
+                        <button type="button" class="btn b_no pop_close"><span>취소<span></span></span></button>
+                        <button type="button" class="btn b_yes" onclick="fn_send_msg()"><span>발송<span></span></span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 쪽지보내기 팝업 // -->
+
+
+<!-- 쪽지보내기 팝업 -->
+<div class="pop_dim"></div>
+<div class="popup noti_default pop_note tos-message-popup">
+    <div class="popup_wrap">
+        <div class="pop_tit">
+            <h3>쪽지 보내기</h3>
+            <a href="javascript:;" class="pop_close">팝업 닫기</a>
+        </div>
+        <div class="pop_cont">
+            <div class="bottom_area">
+                <div class="content_area">
+                    <ul class="form_area">
+                        <li>
+                            <label for="tos-message-popup-receiver-nickname" class="label">받는 이</label>
+                            <div class="text" id="tos-message-popup-receiver-nickname"></div>
+                        </li>
+                        <li>
+                            <label for="tos-message-popup-title" class="label">제목</label>
+                            <input type="text" id="tos-message-popup-title" placeholder="제목을 입력해주세요.">
+                        </li>
+                        <li class="flex_dir_cl">
+                            <textarea id="tos-message-popup-content" placeholder="내용을 입력해주세요."
+                                      class="textarea"></textarea>
+                            <div class="numbers" id="tos-message-popup-char-counter">(0/1000자)</div>
+                        </li>
+                    </ul>
+                    <div class="btn_area">
+                        <button type="button" class="btn b_no pop_close"><span>취소<span></span></span></button>
+                        <button type="button" class="btn b_yes" onclick="tosSendMessage()"><span>발송<span></span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 쪽지보내기 팝업 // -->
+
+<script type="text/javascript" src="/js/wordFilter.js?v=20250203"></script>
+<script type="text/javascript">
+
+    if (!window.wordFilter) {
+        window.wordFilter = new WordFilter();
+    }
+
+    if (typeof wordFilter === 'object' && wordFilter.wordList?.length === 0) {
+
+        wordFilter.init({
+            successCallback: function (data) {
+                //console.log("Successfully fetched word list!");
+            },
+            errorCallback: function (err) {
+                //console.error("Error fetching word list!");
+            }
+        });
+    }
+
+    $(document).ready(function () {
+
+        // 쪽지보내기 팝업창 닫기 시 내용 초기화
+        $('div.popup.tos-message-popup .pop_close').on('click', function () {
+            $('#tos-message-popup-receiver-nickname').text('');
+            $('#tos-message-popup-title').val('');
+            $('#tos-message-popup-title').attr('disabled', false);
+            $('#tos-message-popup-content').val('');
+            $('#tos-message-popup-char-counter').text('(0/1000자)');
+        });
+
+        (function () {
+            const textarea = document.querySelector('#tos-message-popup-content');
+            const counter = document.querySelector('#tos-message-popup-char-counter');
+            const MAX = 1000;
+
+            function updateCounter() {
+                let val = textarea.value || '';
+                let len = val.length;
+
+                // 길이 초과
+                if (len > MAX) {
+                    textarea.value = val.substring(0, MAX);
+                    len = MAX;
+                    // 선택/커서 위치를 맨 끝으로
+                    textarea.selectionStart = textarea.selectionEnd = textarea.value.length;
+                }
+
+                // 카운터 표시
+                counter.textContent = '(' + len + '/' + MAX + '자' + ')';
+                if (len > MAX) {
+                    counter.classList.add('over');
+                } else {
+                    counter.classList.remove('over');
+                }
+            }
+
+            textarea.addEventListener('input', function (e) {
+                updateCounter();
+            });
+
+            updateCounter();
+        })();
+    });
+
+    // 쪽지보내기 레이어
+    function openTosMessagePopup(userNcnm, title, userId) {
+        var loginUserId = 'tutoretest018';
+        console.log("loginUserId : " + loginUserId);
+
+        if(loginUserId == '') {
+            alert("로그인이 필요한 서비스입니다.");
+            location.href="/login";
+            return false;
+        }
+
+        const $popup = $('div.popup.tos-message-popup');
+        $popup.find('#tos-message-popup-receiver-nickname').text(userNcnm);
+        if (title) {
+            $popup.find('#tos-message-popup-title').val('RE: ' + title);
+        }
+        $popup.show();
+        $popup.prev('.pop_dim').show();
+    }
+
+    // 쪽지보내기 v2
+    function tosSendMessage() {
+        const nickname = $('#tos-message-popup-receiver-nickname').text();
+        const title = $('#tos-message-popup-title').val();
+        const content = $('#tos-message-popup-content').val();
+
+        if (title == null || title == '') {
+            alert('제목을 입력하세요.');
+            $('#tos-message-popup-title').focus();
+            return false;
+        }
+        if (content == null || content == '') {
+            alert('내용을 입력하세요.');
+            $('#tos-message-popup-content').focus();
+            return false;
+        }
+        if (content.length > 1000) {
+            alert('최대 글자수를 초과했습니다.(1000자)');
+            return false;
+        }
+
+        if (wordFilter.check(content)) {
+
+            if (!confirm('쪽지를 발송하시겠습니까?')) {
+                return false;
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: '/api/messages',
+                data: {'receiverNicknames': nickname, 'title': title, 'content': content},
+                async: false,
+                success: function (result) {
+                    console.log(result)
+                    alert(result.message);
+                    $('div.popup.tos-message-popup .pop_close').click();
+                },
+                error: function (ex) {
+                    // alert(ex.statusText);
+                    alert(ex.responseJSON.message);
+                }
+            });
+        }
+    }
+</script><div id="globalLoadingBar" class="loading-container fixed" style="display: none">
+    <div class="loading"></div>
+    <div id="loading-text">loading</div>
+</div>
+<script>
+    window.showGlobalLoading = function () {
+        document.getElementById("globalLoadingBar").style.display = "block";
+    };
+
+    window.hideGlobalLoading = function () {
+        document.getElementById("globalLoadingBar").style.display = "none";
+    };
+</script>
+
+<script type="text/javascript" src="/js/swiper-bundle.min.js?v=20250203"></script>
+<script type="text/javascript" src="/js/ZoneMobileUtils.js?v=1"></script>
+<link rel="stylesheet" href="https://www.togetherschool.go.kr/css/swiper-bundle.min.css?v=20250203">
+<link rel="stylesheet" href="https://www.togetherschool.go.kr/css/wave_ani.css?v=20250203">
+<script type="text/javascript" src="/js/google-translate.js?v=20250203"></script>
+<script type="text/javascript" src="/js/i18n/i18nImageLoader.js?v=20250203"></script>
+<script type="text/javascript">
+	// 20240529 아이엠지테크 요청사항
+	var g_sAppPostName    = "togetherschool";
+	var g_sAppScheme      = "togetherschool";
+	let g_pushstate = false;
+
+    $(document).ready(function() {
+        var currentPath = window.location.pathname;
+
+        checkUserAgent();
+
+        $('.btn_top_banner_close').click(function() {
+            $(this).parent().hide();
+        });
+
+        $('#login_teacher_popup_cancel').on('click', function(){
+            $('#login_teacher_popup').hide();
+        });
+
+        $('#login_teacher_popup_move_my_info').on('click', function(){
+            $('#login_teacher_popup').hide();
+            location.href = `/user/auth?userSn=1000001657`;
+        });
+
+        // 퀵링크 메인만 노출
+        if (currentPath !== ('/')) {
+            $('.qbanner_wrap.qlink').hide();
+        }
+
+        $('.btn_qlink').on('click', function(){
+            $(this).parent('.qbanner_wrap.qlink').toggleClass('open');
+        });
+
+                
+        try {
+        	// 앱을 호출했는지 체크
+    		var chk = "";
+    		   
+        	$.ajax({
+                    url : '/user/chkMobiSendAjax',
+                    data: {},
+                    async : false,
+                    success : function(result){
+                    	if(typeof(result) == 'undefined') {return;}
+                        chk = result;
+                        
+                        debugStr += "chk: '" + chk + "'<br/>";
+                        $("#pushDebugConsole").html(debugStr);
+                    },
+                    error : function(){
+                    	console.log('chkMobiSendAjax fail');
+                        
+                        debugStr += "chkMobiSendAjax fail<br/>";
+                        $("#pushDebugConsole").html(debugStr);
+                        
+                        return;
+                    }
+                });
+    		
+    		if(chk != 'Y') {    			
+    			// 호출않했으면 호출        
+    	    	$.ajax({
+    	                url : '/user/chgMobiSendAjax',
+    	                data : {'status' : 'Y'},
+    	                async : false,
+    	                success : function(result){
+    	                	//console.log('chgMobiSendAjax success');
+                            
+                            debugStr += "chgMobiSendAjax success<br/>";
+                            $("#pushDebugConsole").html(debugStr);
+    	                },
+    	                error : function(){
+    	                	console.log('chgMobiSendAjax fail');
+                            
+                            debugStr += "chgMobiSendAjax fail<br/>";
+                            $("#pushDebugConsole").html(debugStr);
+                            
+    	                    return;
+    	                }
+    	            });
+
+	            var bPush = Boolean(1);
+        		
+            	WEB_APP_LOGON('1000001657','tutoretest018','', bPush);
+            	WEB_APP_REQUEST_PUSH_TOKEN();
+    		}
+        } catch(e) {
+            console.log(e.message);
+        }        
+        
+    });
+
+    function fnSetPushState() {
+    	if(g_pushstate) {
+        	g_pushstate = false;
+    	} else {
+        	g_pushstate = true;
+        }
+        console.log(g_pushstate);
+
+        WEB_APP_CHANGE_STATE(g_pushstate);
+    }
+
+    function WEB_APP_CHANGE_STATE(bPush) {
+        //로그인 이후만 작동됨
+    	var loginUserId = 'tutoretest018';
+    	console.log("loginUserId : " + loginUserId);
+        
+    	debugStr += "WEB_APP_CHANGE_STATE: '" + bPush + "'<br/>";
+        $("#pushDebugConsole").html(debugStr);
+        
+    	if(loginUserId == '') {
+        	alert("로그인이후만 작동합니다.");
+        	return;
+        }
+
+    	var sParam  = "push=" + encodeURIComponent(bPush ? 1 : 0);
+    	try {
+			ZoneAppExecute("together-state", sParam, "", false, true);
+    	} catch(e) {
+        	console.log(e.message);
+        }
+    }
+
+    function WEB_APP_LOGON(sUserID, sName, sProfile, bPush) {
+    	var sParam  = "user-id="      + encodeURIComponent(sUserID)
+         	+ "&name="    + encodeURIComponent(sName)
+         	+ "&profile=" + encodeURIComponent(sProfile)
+     	    + "&push=" + encodeURIComponent(bPush ? 1 : 0);
+        
+        debugStr += "WEB_APP_LOGON<br/>";
+        $("#pushDebugConsole").html(debugStr);
+        
+		ZoneAppExecute("together-logon", sParam, "", false, true);
+		//$("#pushDebug").text("(" + bPush + ")");
+    }
+
+    function WEB_APP_REQUEST_PUSH_TOKEN() {
+        
+        debugStr += "WEB_APP_REQUEST_PUSH_TOKEN<br/>";
+        $("#pushDebugConsole").html(debugStr);
+        
+    	ZoneAppExecute("push-token", "", "", false, true);		//
+    }
+
+    var debugStr = "";
+    
+    function onAppToWeb(sCmd, sParam1, sParam2, sParam3) {
+		// sParam1 : AOS, sParam2 : iOS, sParam3
+        debugStr += "onAppToWeb RESPONSE:::";
+        debugStr += "<br/>---------------------------------";
+        debugStr += "<br/>sCmd: '" + sCmd + "'<br/>sParam1: '" + sParam1 + "'<br/>sParam2: '" + sParam2 + "'<br/>sParam3: '" + sParam3 + "'<br/>";
+        debugStr += "<br/>---------------------------------<br/>";
+        $("#pushDebugConsole").html(debugStr);
+
+    	var agent = navigator.userAgent.toLowerCase();
+        var iosMobile = (/iphone|ipad|ipod/i.test(agent));
+        
+        debugStr += "agent: '" + agent + "'<br/>";
+        $("#pushDebugConsole").html(debugStr);
+
+        var loginUserId = 'tutoretest018';
+        var deviceToken = "";
+        var osType = "";
+
+        if (iosMobile||agent.indexOf('iphone') > -1||agent.indexOf('ipad') > -1||agent.indexOf('ipod') > -1||agent.indexOf("safari") > -1) {
+            if (agent.indexOf("chrome") > -1) {
+            	deviceToken = sParam1;
+            	osType = "A";
+            } else {
+                // iOS
+                $('.app_link a.google').hide();
+
+                deviceToken = sParam1;		//sParam2 이나 sParam1은 APNs 키로 잠시 테스트
+                osType = "I";
+            }
+        } else {
+
+            deviceToken = sParam1;
+            osType = "A";
+        }
+
+
+        
+
+        // 토큰요청 응답
+        if(sCmd == "push-token") {
+            
+        	debugStr += "push-token RESPONSE deviceToken: '" + deviceToken + "'<br/>";
+            $("#pushDebugConsole").html(debugStr);
+            
+            //alert("DB에 저장");
+            // DB에 저장
+        	$.ajax({
+                url : '/user/saveMobiInfoAjax',
+                data : {'userId' : loginUserId, 'deviceToken' : deviceToken, 'osType' : osType},
+                async : false,
+                success : function(result){
+                    if(typeof(result) == 'undefined') {return;}
+                    if(result > 0){
+                    	//alert('onAppToWeb success');
+                        console.log('onAppToWeb success');
+                    }
+                    
+                    debugStr += "saveMobiInfoAjax result: '" + result + "'<br/>";
+                    $("#pushDebugConsole").html(debugStr);
+                },
+                error : function(){
+                	//alert('onAppToWeb fail');
+                	console.log('onAppToWeb fail');
+                    
+                    debugStr += "saveMobiInfoAjax fail<br/>";
+                    $("#pushDebugConsole").html(debugStr);
+                    
+                    return;
+                }
+            });
+        }
+    }
+
+    (function() {
+        var nl = document.createElement('script'); nl.type = 'text/javascript';
+        nl.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'www.togetherschool.go.kr/js/wlo.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(nl, s);
+        var done = false;
+        nl.onload = nl.onreadystatechange = function() {
+            if ( !done && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete") ) {
+                done = true;
+                _n_p1 = '';
+                _n_p2 = '';
+                _n_p3 = '';
+                _n_p4 = '';
+                _n_p5 = '';
+                _n_sid = "www.togetherschool.go.kr";
+                _n_uid_cookie = "DS_CIF";
+                n_logging();
+                nl.onload = nl.onreadystatechange = null;
+            }}})();
+
+    var ww = $(window).width();
+    var mySwipers = []; // Swiper 인스턴스를 저장하는 배열
+
+    function initSwiperGnb(selector) { //서브 gnb mobile
+        return new Swiper(selector, {
+            slidesPerView: 3.4, //기본갯수 -20251020 slidesPerView값 수정
+            breakpoints: {
+                // 480: {
+                //     slidesPerView: 3.4,  //브라우저가 480보다 클 때 -20251020 삭제
+                // },
+                640: {
+                    slidesPerView: 4.5,  //브라우저가 640보다 클 때 -20251020 분기 추가
+                },
+                768: {
+                    slidesPerView: 5.5,  //브라우저가 768보다 클 때 표시될 메뉴 갯수 -20251020 slidesPerView값 수정
+                },
+            },
+        });
+    }
+    
+    function initSwiperGnbSubPC(selector) { // 서브 gnb PC -20251020 swiper 추가
+        return new Swiper(selector, {
+            slidesPerView: 5.5, //기본으로 표시될 메뉴 갯수
+            breakpoints: {
+                1140: {
+                    slidesPerView: 7,  //브라우저가 1140보다 클 때 표시될 메뉴 갯수
+                },
+            },
+        });
+    }
+    
+    function initSwiperTabMenu(selector) { //탭메뉴 모바일에서 swiper 적용 20240620 추가-다른 화면쪽에도 적용 필요할 경우 동일하게 적용(html 영역 수정사항도 동일)
+        return new Swiper(selector, {
+            slidesPerView: 3.4, //기본으로 표시될 메뉴 갯수
+            breakpoints: {
+                768: {
+                    slidesPerView: 5,  //브라우저가 768보다 클 때 표시될 메뉴 갯수
+                },
+            },
+        });
+    }
+    function initializeSwipers() {
+    	var currentPath = window.location.pathname;
+    	if(currentPath != "/" && currentPath != "/togetherTalkTalk/shareMedia/detailView") {
+	        if (ww < 981) { //모바일 분기 981 체크 필-20240205
+	            mySwipers.push(initSwiperGnb(".m_sub_menu"));
+	            mySwipers.push(initSwiperTabMenu(".tab_style_wrap")); //탭메뉴 mob 버전 -20240620 추가
+	        }
+            mySwipers.push(initSwiperGnbSubPC(".wrap:not(#main) .gnb.new nav")); //20251020 서브 gnb PC 추가-세부 분기에서 갯수 조정
+    	}
+    }
+    
+    initializeSwipers();
+    $(window).on('resize', function () {
+        ww = $(window).width();
+        initializeSwipers();
+    });
+
+    function checkUserAgent() {
+        var agent = navigator.userAgent.toLowerCase();
+        var iosMobile = (/iphone|ipad|ipod/i.test(agent));
+
+        if (iosMobile||agent.indexOf('iphone') > -1||agent.indexOf('ipad') > -1||agent.indexOf('ipod') > -1||agent.indexOf("safari") > -1) {
+            if (agent.indexOf("chrome") > -1) {
+            } else {
+                $('.app_link a.google').hide();
+            }
+        }
+    }
+
+	// 쪽지보내기 팝업창 닫기 시 내용 초기화
+    $('.pop_note .pop_close').on('click', function(){
+    	$('#area_msgRcvrNcnm').text('');
+    	$('#msg_title').val('');
+    	$('#msg_content').val('');
+    })
+	// 쪽지보내기 수신자 닉네임 넣기
+    function fn_msgRcvrUserId(userNcnm) {
+		$('#area_msgRcvrNcnm').text(userNcnm);
+    }
+
+	// 쪽지보내기
+    function fn_send_msg() {
+        var rcvrNcnm = $('#area_msgRcvrNcnm').text();
+		var msgTitle = $('#msg_title').val();
+		var msgCntn = $('#msg_content').val();
+		if(msgTitle == null || msgTitle == ''){
+			alert('제목을 입력하세요.');
+			$('#msg_title').focus();
+			return false;
+		}
+		if(msgCntn == null || msgCntn == ''){
+			alert('내용을 입력하세요.');
+			$('#msg_content').focus();
+			return false;
+		}
+
+		$.ajax({
+            url : '/myPage/insertAdminMsg',
+            data : {'userNcnm' : rcvrNcnm, 'msgTitle' : msgTitle, 'msgCntn' : msgCntn},
+            async : false,
+            success : function(result){
+                if(typeof(result) == 'undefined') {return;}
+                if(result > 0){
+                   alert('쪽지를 발송하였습니다.');
+                    $('.pop_note .pop_close').click();
+                }else{
+                	alert('쪽지를 받을 수 없는 사용자입니다.');
+                }
+            },
+            error : function(){
+            	console.log('sendMsg failed');
+            	alert('쪽지 발송 실패');
+                return;
+            }
+        });
+    }
+
+    // 에디터에서 업로드한 이미지를 번역할때, 게시판을 구분하기 위한 용도
+    window.editorBbsId = 0;
+</script>
+<!-- <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> -->
+
+<script>
+/*
+let startX = 0;
+const threshold = 10;
+
+document.addEventListener('pointerdown', (e) => {
+	startX = e.clientX;
+	console.log('down startX :' + startX);
+});
+
+document.addEventListener('pointermove', (e) => {
+	console.log('e.pointerType :' + e.pointerType);
+    if(!startX || e.pointerType === 'mouse') return;
+	
+	const currentX = e.clientX;
+	const diffX = currentX - startX;
+	
+	console.log('move currentX :' + currentX);
+
+	console.log('move diffX :' + diffX);
+	if(diffX > threshold) {
+		window.history.back();
+		startX = null;
+	}
+});
+
+document.addEventListener('pointerup', () => {
+	startx = null;
+});
+*/
+
+/*
+let startX = 0;
+const threshold = 50;
+
+document.addEventListener('touchstart', (e) => {
+	startX = e.touches[0].clientX;
+	console.log('touchstart startX :' + startX);
+});
+
+document.addEventListener('touchmove', (e) => {
+    if(!startX) return;
+	
+	const currentX = e.touches[0].clientX;
+	const diffX = currentX - startX;
+	
+	console.log('move currentX :' + currentX);
+
+	console.log('move diffX :' + diffX);
+	if(diffX > threshold) {
+		window.history.back();
+		startX = null;
+	}
+});
+
+document.addEventListener('touchend', () => {
+	startx = null;
+});
+*/
+</script>
+
+<!-- 
+<script type="text/javascript" src="https://api.ipify.org?format=jsonp&callback=getClientIP"></script>
+ -->
+<script type="text/javascript">
+	var IPAddr = ""; 
+	function getIP(json) {
+		IPAddr = json.ip;
+	}
+
+$(document).ready(function() {
+		var serverType = "DEV";
+		var menuId = '234';
+		var menuNm = '신청하기';
+		var menuCd = 'E';
+		var topMenuNm = '스터디카페';
+		var menuUrl = '/studyCafe/readingMentoring';
+		var menuHgrnkId = '233';
+		var menuSubId = '233';
+		var menuSubNm = '독서멘토링';
+
+		var urlParam = new URLSearchParams(window.location.search);
+		var pstId = urlParam.get("pstId");
+		    
+		var tosUrlDetl = window.location.href;
+		var tosUrl = tosUrlDetl.split('&')[0];
+		
+		var param = '';
+		var uri = '/studyCafe/readingMentoring';
+	
+	    var userAgent = window.navigator.userAgent.toLowerCase();
+	    var OperSys = getClientOS(userAgent);
+	    var WebBrowser = getClientBrowser(userAgent);
+
+	    var inflowUrlDetail = document.referrer;
+	    var inflowDomn = "";
+	    if(document.referrer) {
+	    	inflowDomn = new URL(document.referrer).hostname;
+	    }
+
+	    var webApp = "WEB_PC";
+	    
+	    var device = getDevice(userAgent);
+		
+		var nation = "";
+		var city = "";
+
+		
+		//console.log("IPAddr:" + IPAddr);
+		function getIpa() {
+			$(function() {
+			    	$.getJSON("https://api.ipify.org?format=jsonp&callback=?", function(json) {
+
+			    		return json.ip;
+    		
+			    		})
+			          .done(function(json) {
+			            //console.log('success : ' + json.ip);
+			          })
+			          .fail(function() {
+			            console.log('fail');
+			          })
+			});
+		}	  
+		function getRegion(clientIp) {
+		    fetch("http://ip-api.com/json/" + clientIp) 
+		      .then(response => response.json()) 
+		      .then(data => { 
+		    	nation = data.country;
+		    	city = data.regionName;
+ 
+		      }) 
+		      .catch(error => { 
+ 
+		      }); 
+		}
+	    
+	    
+	    
+	    function getDevice(ua) {
+	    	//var ua = userAgent.toLowerCase();
+	    	var device = "PC";
+	    	const mobileAgents = ["mobile", "android", "iphone","ipod", "ipad", "windows phone","blackberry"
+					, "opera mini", "opera mobi","windows ce","nokia","webos","sonyericsson","iemobile"];
+	    	mobileAgents.forEach(function(mob) {
+		    	
+	    		if(ua.indexOf(mob) > -1) {
+	    			device = "MOBILE";
+	    			if(userAgent.indexOf("app-name") > -1) {
+	    			    if(userAgent.indexOf("android") > -1) {
+	    			    	webApp = "APP_AND";
+	    				} else {
+	    					webApp = "APP_IOS";
+	    				}
+	    				
+	    			} else {
+	    				webApp = "WEB_MO";
+	    			}
+	    		}
+	    	});
+	    	
+	    	return device;
+		}
+	    
+	    function getClientOS(ua) {
+	    	var OS = "";
+	    	//var ua = userAgent.toLowerCase();
+	    
+	    	if(ua.indexOf("windows") > -1) {
+	    		OS = "Windows";
+	    	} else if(ua.indexOf("iphone") > -1) {
+	    		OS = "iOS";
+	    	} else if(ua.indexOf("ipad") > -1) {
+	    		OS = "iOS";
+	    	} else if(ua.indexOf("android") > -1) {
+	    		OS = "Android";
+	    	} else if(ua.indexOf("mac") > -1) {
+	    		OS = "Mac";
+	    	} else if(ua.indexOf("linux") > -1) {
+	    		OS = "Linux";
+	    	} else {
+	    		OS = "Others";
+	    	}
+	    	return OS;
+	    }
+	    
+	    
+	    function getClientBrowser(ua) {
+	    	var browser = "";
+	    	//var ua = userAgent.toLowerCase();
+	    
+	    	if(ua.indexOf("maie") > -1) {
+	    		browser = "ie";
+	    	} else if(ua.indexOf("trident") > -1) {
+	    		browser = "ie";
+	    	} else if(ua.indexOf("edg") > -1) {
+	    		browser = "Edge";
+	    	} else if(ua.indexOf("whale") > -1) {
+	    		browser = "Whale";
+	    	} else if(ua.indexOf("firefox") > -1) {
+	    		browser = "Firefox";
+	    	} else if(ua.indexOf("opr") > -1) {
+	    		browser = "Opera";
+	    	} else if(ua.indexOf("chrome") == -1 && ua.indexOf("safari") > -1) {
+	    		browser = "Safari";
+	    	} else if(ua.indexOf("chrome") > -1) {
+	    		browser = "Chrome";
+	    	} else {
+	    		browser = "Others";
+	    	}
+	    	return browser;
+	    }
+
+	    if(menuUrl == "/") { 
+		    menuNm = "Home";
+		    menuCd = "ZZ";
+		    menuSubNm = "Home";
+		}
+		var params = { 
+				     'menuId': menuId,
+				     'menuNm': menuNm,
+				     'menuCd': menuCd,
+				     'topMenuNm': topMenuNm,
+				     'menuUrl': menuUrl,
+				     'menuHgrnkId': menuHgrnkId,
+				     'menuSubId': menuSubId,
+				     'menuSubNm': menuSubNm,
+				     'wbsr': WebBrowser,  
+				     'opersysm': OperSys, 
+				     'device': device,
+				     'webAppClsfn': webApp,
+				     'tosUrl': tosUrl,
+				     'tosUrlDetl': tosUrlDetl,
+				     'pstId': pstId,
+				     'inflowUrlDetail': inflowUrlDetail,
+				     'inflowDomn': inflowDomn,
+				     'ipAddr': IPAddr,
+				     'natnNm': nation,
+				     'areaNm': city
+				     };
+
+	    $.ajax({
+            url : '/stat/connectInfoSave',
+            type: 'post',
+            data : JSON.stringify(params),
+            dataType: 'json',
+            contentType: 'application/json',
+            success : function(result){
+                console.log('접속정보 저장 하였습니다.');
+            },
+            error : function(){
+            	
+                
+            }
+        });
+	    //setAreaSession();
+	    //if(sessionStorage.getItem("userAreaNo") != '') {
+	    //	alert(sessionStorage.getItem("userAreaNo"));
+		//} else {
+		//	sessionStorage.setItem("userAreaNo", "AAAA01");
+        //}
+
+
+	  if("DEV" == serverType ||  "LOCAL" ==serverType) {
+		  //console.log(sessionStorage.getItem("latitude") + '/' + sessionStorage.getItem("longitude"));
+	    //getLocation();
+	    function getLocation() {
+			
+	        // Geolocation API 지원 여부 확인
+	        if ("geolocation" in navigator) {
+	          navigator.geolocation.getCurrentPosition(
+	            (position) => {
+	              const { latitude, longitude, accuracy } = position.coords;
+	  			    if(position.coords.latitude != '') {
+	  				    sessionStorage.setItem("latitude", position.coords.latitude);
+	  			    }
+	  			    if(position.coords.longitude != '') {
+	  			        sessionStorage.setItem("longitude", position.coords.longitude);
+	  			    }
+	  			    get_loc = position.coords.latitude + '-' + position.coords.longitude;
+	  			    console.log(get_loc);
+
+	            },
+	            (error) => {
+	              console.log(`위치 정보를 가져올 수 없습니다: `);
+	            },
+	            {
+	              enableHighAccuracy: true, // 정확도 우선 모드
+	              timeout: 3000,           // 10초 이내에 응답 없으면 에러 발생
+	              maximumAge: 0             // 항상 최신 위치 정보 수집
+	            }
+	          );
+	        } else {
+	          console.log("브라우저가 위치 서비스를 지원하지 않습니다.");
+	        }
+	  	  
+	    }
+	  } /*dev/stg*/    
+
+
+
+        
+	//} /*dev/stg*/
+});  /* ready */
+</script>
+<!-- 
+<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+ --></div>
+</body>
+</html>

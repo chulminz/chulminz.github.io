@@ -1,0 +1,607 @@
+@charset "utf-8";
+
+/* 독서멘토링 소개 */
+.reading-mentoring {
+  position: relative;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+  font-family:
+    "Noto Sans KR", "맑은 고딕", "Malgun Gothic", "돋움", "Dotum",
+    "AppleGothic", sans-serif;
+  color: #202020;
+
+  // 독서멘토링 소개 - 상단 영역
+  .rm-top {
+    aspect-ratio: 950 / 1336;
+    background: url("/images/sub/rm-bg_visual.png") no-repeat 0 0;
+    background-size: 100% auto;
+    &__title {
+      padding-top: 13.4%;
+      text-align: center;
+      font-family: "Gmarket Sans";
+      .t1 {
+        display: inline-block;
+        padding: 12px 32px 0;
+        font-size: 48px;
+        font-weight: 300;
+        color: #49318D;
+        border: 2px solid rgb(73, 49, 141, 0.75);
+        background-color: rgba(255, 255, 255, 0.9);
+        strong {
+          margin-left: 8px;
+          font-weight: 700;
+        }
+      }
+      .t2 {
+        display: block;
+        width: 632px;
+        margin: 28px auto 0;
+        aspect-ratio: 632 / 86;
+        text-align: left;
+        background: url("/images/sub/rm-txt_title.png") no-repeat 0 0;
+        background-size: 100% auto;
+      }
+    }
+    &__buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin: 54px 6.7% 0;
+      > a {
+        border-radius: 16px;
+        border: 2px solid rgba(73, 49, 141, 0.75);
+        background-color: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.3);
+        font-size: 32px;
+        font-weight: 700;
+      }
+    }
+    &__mento-req,
+    &__mentee-req {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 22px;
+      width: calc((100% - 24px) / 2);
+      &::before {
+        content: "";
+        flex-grow: 0;
+        flex-shrink: 0;
+        display: block;
+        width: 80px;
+        height: 80px;
+        border-radius: 100%;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-size: cover;
+      }
+    }
+    &__mento-req {
+      color: #49318D;
+      &::before {
+        background-image: url("/images/sub/rm-icon_mento.png");
+      }
+    }
+    &__mentee-req {
+      color: #d94ec4;
+      &::before {
+        background-image: url("/images/sub/rm-icon_mentee.png");
+      }
+    }
+    &__link {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 22px;
+      width: 100%;
+      text-align: center;
+      line-height: 1.4;
+      color: #49318D;
+      &::after {
+        content: "";
+        position: absolute;
+        right: 22px;
+        top: calc(50% - 40px);
+        width: 80px;
+        height: 80px;
+        background-color: #49318D;
+        background-image: url("/images/sub/rm-icon_arrow.png");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 50% 50%;
+        border-radius: 100%;
+      }
+      span:first-child {
+        font-size: 24px;
+        color: #202020;
+        font-weight: 300;
+        strong {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
+  // 독서멘토링 소개 - 독서멘토링은? 
+  .rm-about {
+    padding: 64px 64px 0;
+    background: linear-gradient(180deg, #e0cdff 0%, #ffa8f2 100%);
+    &::after {
+      content: '';
+      display: block;
+      margin: 0 -64px;
+      aspect-ratio: 950 / 408;
+      background: url("/images/sub/rm-bg_visual2.png") no-repeat 0 0;
+      background-size: cover;
+    }
+    &__tit {
+      font-size: 64px;
+      font-weight: 700;
+      color: #49318D;
+    }
+    &__desc {
+      margin-top: 16px;
+      padding-right: 40px;
+      font-weight: 300;
+      font-size: 32px;
+      word-break: keep-all;
+    }
+    &__list {
+      margin: 50px 0 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    &__list-item {
+      position: relative;
+      padding-left: 160px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      strong {
+        font-size: 32px;
+        font-weight: 700;
+      }
+      p {
+        font-size: 24px;
+        font-weight: 300;
+        line-height: 1.4;
+        word-break: keep-all;
+      }
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 128px;
+        height: 128px;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-size: cover;
+      }
+      &--icon1::before {
+        background-image: url("/images/sub/rm-icon_01.png");
+      }
+      &--icon2::before {
+        background-image: url("/images/sub/rm-icon_02.png");
+      }
+      &--icon3::before {
+        background-image: url("/images/sub/rm-icon_03.png");
+      }
+    }
+  }
+
+  // 독서멘토링 소개 - 멘토/멘티 신청 방법 안내 
+  .rm-steps {
+    padding: 64px 64px 0;
+    &__tit {
+      font-size: 48px;
+      font-weight: 700;
+      color: #49318D;
+    }
+    &__list {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      margin: 48px 0;
+    }
+    &__list-item {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    &__step-head {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 32px;
+      font-weight: 700;
+      span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 16px;
+        height: 40px;
+        display: flex;
+        font-size: 24px;
+        font-weight: 300;
+        line-height: 1;
+        color: #FFFFFF;
+        background: linear-gradient(96.34deg, #D94EC4 0%, #8759D3 100%);
+        border-radius: 40px;
+      }
+    }
+    &__step-body {
+      font-size: 24px;
+      font-weight: 300;
+      p {
+        word-break: keep-all;
+      }
+      small {
+        font-size: 24px;
+        font-weight: 300;
+        color: #606060;
+      }
+      .underline {
+        position: relative;
+        color: #006AEA;
+        text-decoration: underline;
+      }
+    }
+    &__path {
+      margin-bottom: 8px;
+      font-size: 24px;
+      font-weight: 700;
+      color: #D94EC4;
+      word-break: keep-all;
+    }
+    &::after {
+      content: '';
+      display: block;
+      aspect-ratio: 822 / 400;
+      background: url("/images/sub/rm-bg_visual3.png") no-repeat 0 0;
+      background-size: cover;
+    }
+  }
+
+  // 독서멘토링 소개 - 독서멘토링 활동 가이드 
+  .rm-guides {
+    padding: 64px;
+    color: #ffffff;
+    background: url("/images/sub/rm-bg_visual4.png") no-repeat 0 0;
+    background-size: cover;
+    &__tit {
+      text-align: center;
+      font-size: 48px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    &__buttons {
+      display: flex;
+      gap: 24px;
+      margin-top: 48px;
+    }
+    &__button {
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 24px;
+      background-color: #ffffff;
+      box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.3);
+      border-radius: 64px;
+      font-size: 32px;
+      font-weight: 700;
+      > span {
+        flex: 1;
+      }
+      &::before {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 80px;
+        border-radius: 100%;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-size: 100% auto;
+      }
+      &::after {
+        content: '';
+        display: block;
+        width: 56px;
+        height: 56px;
+        border-radius: 100%;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-size: 100% auto;
+      }
+      &-mento {
+        color: #49318D;
+        &::before {
+          background-image: url("/images/sub/rm-icon_mento.png");
+        }
+        &::after {
+          background-image: url("/images/sub/rm-icon_arrow2.png");
+        }
+      }
+      &-mentee {
+        color: #D94EC4;
+        &::before {
+          background-image: url("/images/sub/rm-icon_mentee.png");
+        }
+        &::after {
+          background-image: url("/images/sub/rm-icon_arrow3.png");
+        }
+      }
+    }
+  }
+
+  // 독서멘토링 소개 - 유의사항 
+  .rm-notice {
+    padding: 64px;
+    color: #606060;
+    background-color: #faf6ff;
+    &__tit {
+      font-size: 48px;
+      font-weight: 700;
+      color: #202020;
+    }
+    &__lists {
+      margin-top: 32px;
+      font-size: 24px;
+      font-weight: 300;
+      line-height: 1.4;
+    }
+    &__list {
+      position: relative;
+      padding-left: 12px;
+      margin-bottom: 8px;
+      word-break: keep-all;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 14px;
+        width: 4px;
+        height: 4px;
+        background-color: #606060;
+        border-radius: 100%;
+      }
+    }
+  }
+
+  // 독서멘토링 소개 - 문의사항 
+  .rm-customer {
+    padding: 64px 32px;
+    color: #ffffff;
+    background-color: #49318D;
+    text-align: center;
+    font-weight: 300;
+    &__tit {
+      position: relative;
+      display: inline-block;
+      font-size: 48px;
+      font-weight: 700;
+      &::after {
+        content: '';
+        position: absolute;
+        top: -32px;
+        right: -82px;
+        width: 72px;
+        height: 72px;
+        background: url("/images/sub/rm-icon_q.png") no-repeat 0 0;
+        background-size: cover;
+      }
+    }
+    &__call {
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      font-size: 32px;
+      strong {
+        font-size: 24px;
+        font-weight: 700;
+      }
+    }
+    &__kakao {
+      margin-top: 24px;
+      font-size: 24px;
+      a {
+        position: relative;
+        &::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          height: 2px;
+          background-color: #fff;
+        }
+        &::after {
+          content: '';
+          position: relative;
+          top: 3px;
+          display: inline-block;
+          width: 24px;
+          height: 24px;
+          background-image: url("/images/sub/rm-icon_arrow4.png");
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: cover;
+        }
+      }
+    }
+    &__time {
+      margin-top: 24px;
+      font-size: 24px;
+      padding: 16px 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      background-color: #3C2482;
+      border-radius: 16px;
+      div {
+        flex-grow: 0;
+        word-break: keep-all;
+      }
+      strong {
+        margin-right: 8px;
+        font-weight: 700;
+      }
+      span {
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
+
+/* 태블릿 */
+@media screen and (max-width: 980px) {
+  .reading-mentoring {
+    width: calc(100% - 36px);
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .reading-mentoring {
+    // 독서멘토링 소개 - 독서멘토링 활동 가이드 
+    .rm-guides {
+      padding: 48px 32px;
+      &__tit {
+        font-size: 40px;
+        word-break: keep-all;
+      }
+      &__buttons {
+        gap: 16px;
+        margin-top: 32px;
+        text-align: center;
+      }
+      &__button {
+        flex-direction: column;
+        border-radius: 48px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .reading-mentoring {
+
+    // 독서멘토링 소개 - 상단 영역
+    .rm-top {
+      &__title {
+        padding-top: 10.8%;
+        .t1 {
+          padding: 4px 22px 0;
+          font-size: 32px;
+        }
+        .t2 {
+          width: 422px;
+          margin-top: 16px;
+        }
+      }
+      &__buttons {
+        margin-top: 28px;
+        gap: 16px;
+        > a {
+          font-size: 24px;
+        }
+      }
+      &__mento-req,
+      &__mentee-req {
+        flex-direction: column;
+        gap: 8px;
+        padding: 14px;
+      }
+      &__link {
+        text-align: left;
+        padding: 26px 22px;
+        span:first-child { 
+          font-size: 16px;
+        }
+      }
+    }
+
+      // 독서멘토링 소개 - 독서멘토링은? 
+    .rm-about {
+      padding: 48px 32px 0;
+      &::after {
+        margin: 0 -32px;
+      }
+      &__tit {
+        font-size: 48px;
+      }
+      &__desc {
+        font-size: 24px;
+      }
+      &__list {
+        margin: 32px 0;
+        gap: 32px;
+      }
+      &__list-item {
+        
+        &::before {
+          top: calc(50% - 64px);
+        }
+      }
+    }
+
+    // 독서멘토링 소개 - 멘토/멘티 신청 방법 안내 
+    .rm-steps {
+      padding: 48px 32px 0;
+      &__tit {
+        font-size: 40px;
+      }
+      &__list {
+        gap: 32px;
+        margin: 32px 0;
+      }
+    }
+
+    // 독서멘토링 소개 - 유의사항 
+    .rm-notice {
+      padding: 48px 32px; 
+      &__tit {
+        font-size: 40px;
+      }
+    }
+
+    // 독서멘토링 소개 - 문의사항 
+    .rm-customer {
+      padding: 48px 32px;
+      &__tit {
+        font-size: 40px;
+      }
+      &__time {
+        width: 100%;
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .reading-mentoring {
+    width: calc(100% - 28px);
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .reading-mentoring {
+    width: calc(100% - 24px);
+    // 독서멘토링 소개 - 독서멘토링 활동 가이드 
+    .rm-guides {
+      padding: 24px 12px;
+    }
+  }
+}
