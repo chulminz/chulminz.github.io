@@ -48,12 +48,15 @@
   margin: 5.4rem 6.7% 0;
 }
 .reading-mentoring .rm-top__buttons > a {
+  position: relative;
   border-radius: 1.6rem;
   border: 0.2rem solid rgba(73, 49, 141, 0.75);
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.9) !important;
   box-shadow: 0 0 0.8rem 0 rgba(0, 0, 0, 0.3);
   font-size: 3.2rem;
   font-weight: 700;
+  line-height: 1.5;
+  overflow: hidden;
 }
 .reading-mentoring .rm-top__mento-req, .reading-mentoring .rm-top__mentee-req {
   display: flex;
@@ -73,6 +76,44 @@
   background-repeat: no-repeat;
   background-position: 0 0;
   background-size: cover;
+}
+.reading-mentoring .rm-top__mento-req .no-msg, .reading-mentoring .rm-top__mentee-req .no-msg {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  font-size: 2.4rem;
+  color: #FFFFFF;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.reading-mentoring .rm-top__mento-req .no-msg2, .reading-mentoring .rm-top__mentee-req .no-msg2 {
+  display: none;
+  font-size: 1.6rem;
+  color: #FF0017;
+}
+.reading-mentoring .rm-top__mento-req .no-msg2::before, .reading-mentoring .rm-top__mentee-req .no-msg2::before {
+  content: "(";
+}
+.reading-mentoring .rm-top__mento-req .no-msg2::after, .reading-mentoring .rm-top__mentee-req .no-msg2::after {
+  content: ")";
+}
+.reading-mentoring .rm-top__mento-req.disabled .no-msg, .reading-mentoring .rm-top__mentee-req.disabled .no-msg {
+  display: flex;
+}
+.reading-mentoring .rm-top__mento-req:has(.no-msg2).disabled, .reading-mentoring .rm-top__mentee-req:has(.no-msg2).disabled {
+  color: #606060;
+}
+.reading-mentoring .rm-top__mento-req:has(.no-msg2).disabled::before, .reading-mentoring .rm-top__mentee-req:has(.no-msg2).disabled::before {
+  filter: grayscale(1);
+  opacity: 0.7;
+}
+.reading-mentoring .rm-top__mento-req:has(.no-msg2).disabled .no-msg2, .reading-mentoring .rm-top__mentee-req:has(.no-msg2).disabled .no-msg2 {
+  display: block;
 }
 .reading-mentoring .rm-top__mento-req {
   color: #49318d;
@@ -484,7 +525,7 @@
     margin-top: 1.78rem;
   }
   .reading-mentoring .rm-top__buttons {
-    margin-top: 3.11rem;
+    margin: 3.11rem 5.4% 0;
     gap: 1.78rem;
   }
   .reading-mentoring .rm-top__buttons > a {
@@ -495,6 +536,7 @@
     gap: 0.89rem;
     padding: 1.56rem;
     text-align: center;
+    width: calc((100% - 1.78rem) / 2);
   }
   .reading-mentoring .rm-top__link {
     text-align: left;
